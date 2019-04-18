@@ -173,7 +173,7 @@ h1 {
 
 .jaime
 {
-  background-color: #3339ff;
+  background-color: #2175a5;
   border: none;
   color: white;
   text-align: center;
@@ -183,12 +183,12 @@ h1 {
   border-style: solid;
   transition: 0.6s ease;
   border-width: 1px;
-  border-color: #3339ff;
+  border-color: #2175a5;
 }
 .jaime:hover
 {
-    background-color: rgba(51,144,255,0.8);
-    color : #3339ff;
+    background-color: rgba(51,144,255,0.3);
+    color : #2175a5;
 }
 
 .resume

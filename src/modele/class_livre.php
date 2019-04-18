@@ -14,7 +14,9 @@ class Livre {
     private $selectByID;
     private $update;
     private $search;
-    
+    private $reservation;
+    private $idReservation;
+
     public function __construct($db)
     {
         $this->db = $db;
@@ -60,10 +62,32 @@ class Livre {
                                    . "ISBNLivre = :isbn, ResumeLivre = :resume, DispoLivre = :dispo, PrixLivre = :prix, NbrExemplaireLivre = :nbrexemplaire "
                                    . "where Idlivre = :id");
         $this->search = $db->prepare("select * from Livre where TitreLivre = :search");
+        $this->reservation = $db->prepare("insert into Reservation(LivreReservation, UtilisateurReservation) values(:id, :pseudo)");
+        $this->idReservation = $db->prepare("select max(IdReservation) from Reservation");
    }
 
 
+   public function reservation($id, $pseudo)
+   {
+       $r = true;
+       $this->reservation->execute(array(':id'=>$id, ':pseudo'=>$pseudo));
+       if ($this->reservation->errorCode() != 0)
+       {
+           print_r($this->reservation->errorInfo());
+           $r = false;
+       }
+       return $r;
+   }
 
+   public function idReservation()
+   {
+       $this->idReservation->execute();
+       if ($this->idReservation->errorCode() != 0)
+       {
+           print_r($this->idReservation->errorInfo());
+       }
+       return $this->idReservation->fetchAll();
+   }
 
    public function search($search)
    {

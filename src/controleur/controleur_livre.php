@@ -92,6 +92,48 @@ function actionPresLivre($twig, $db)
 {
     $livre = new Livre($db);
     $form = array();
+
+    if(isset($_POST['btReserver']))
+    {
+        if(isset($_POST['inputPseudo']))
+        {
+            if($_POST['inputPseudo']!='')
+            {
+                $id = $_POST['idLivre'];
+                $pseudo = $_POST['inputPseudo'];
+                $exec = $livre->reservation($id, $pseudo);
+                if(!$exec)
+                {
+                    $form['valide'] = false;
+                    $form['message'] = "Problème lors de la réservation";
+                }
+                else
+                {
+                    $form['valide'] = true;
+                    $code = $livre->idReservation();
+                    $titre = $livre->selectByID($id);
+                    $titre = $titre[0][1];
+                    $code = $code[0][0];
+                    $form['message'] = "Réservation effectuée pour le livre :";
+                    $form['titre'] = "$titre";
+                    $form['message2'] = "Veuillez retenir ce code :";
+                    $form['code'] = "$code";
+                    $form['message3'] = "il vous servira à retirer votre livre en magasin";
+                }
+            }
+            else
+            {
+                $form['valide'] = false;
+                $form['message'] = "Votre pseudo ne peut être vide";
+            }
+        }
+        else
+        {
+            $form['valide'] = false;
+            $form['message'] = "Aucun pseudo spécifié";
+        }
+    }
+
     if(isset($_GET['id']))
     {
         $id = $_GET['id'];

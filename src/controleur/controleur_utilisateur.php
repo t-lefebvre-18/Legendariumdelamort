@@ -1,5 +1,6 @@
 <?php
-    function actionUtilisateur($twig, $db){
+    function actionUtilisateur($twig, $db)
+    {
         $utilisateur = new Utilisateur($db);
         if(isset($_POST['btSup'])){
             $email = $_POST['email'];
@@ -14,7 +15,7 @@
         $utilisateur = new Utilisateur($db);
         $roles = $utilisateur->role();
         if(isset($_POST['btModifUtilisateur'])){
-            
+
             $email = $_POST['email'];
             $nom = $_POST['inputNom'];
             $prenom = $_POST['inputPrenom'];
@@ -36,5 +37,4 @@
         }
         $util = $utilisateur->afficher($_POST['email']);
         echo $twig->render('utilisateur-modif.html.twig', array('liste'=>$util, 'roles'=>$roles, 'form'=>$form));
-        
-    }       
+    }

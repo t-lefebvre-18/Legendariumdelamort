@@ -2,10 +2,23 @@
 {% block title %} {{ parent() }} Administration {% endblock %}
 
 {% block contenu %}
-
-    {% if form.message is defined %}
+{% if form.valide is defined %}
+    {% if form.valide == false  %}
         <h1> Erreur : {{form.message}} </h1>
     {% else %}
+        <center>
+            <h1>
+                Succès : {{form.message}}</br></br>
+                <u>{{form.titre}}</u></br>
+                {{form.message2}}</br></br>
+                <b>{{form.code}}</b></br>
+                {{form.message3}}
+                <a href="index.php?page=librairie"> Revenir à la librairie </a>
+            </h1>
+        </center>
+
+    {% endif %}
+{% else %}
         {% for l in liste %}
             <h1> {{l.TitreLivre}} </h1>
 
@@ -17,13 +30,48 @@
                 Genre : {{l.LibelleType}}</br>
                 Editeur : {{l.LibelleEditeur}}</br>
                 Prix : {{l.PrixLivre}} €</br>
-                Note : {{l.JaimeLivre}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="jaime"> + </button> </br>
-                <p style="color:{{l.CouleurDisponibilite}};">{{l.LibelleDisponibilite}}</p></br></br>
+                Note : {{l.JaimeLivre}}
+
+                <form action="index.php?page=livre" method="post">
+                    <input type="hidden" name="idJaime" value="{{l.IdLivre}}"/>
+                    <button class="jaime"><span class="glyphicon glyphicon-thumbs-up" name="btJaime" aria-hidden="true"/></button></br>
+                </form>
+                <p style="color:{{l.CouleurDisponibilite}};">{{l.LibelleDisponibilite}}</p></br>
+
+
+                <button id="cb" onclick="saisir();" name="btReserver" class="jaime">Réserver <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"/></button></br></br>
+                <div id="coucou">
+                    <form action="index.php?page=livre&id={{l.IdLivre}}" method="post">
+                        <h4> Pseudonyme sous lequel vous allez retirer votre livre : </h4>
+                        <input type="text" placeholder="Pseudo" name="inputPseudo"/>
+                        <input type="hidden" name="idLivre" value="{{l.IdLivre}}">
+                        <button class="jaime" name="btReserver"><span class="glyphicon glyphicon-ok"/></button>
+                    </form>
+                </div></br></br>
+
                 <div class="resume">
                     {{l.ResumeLivre}}
                 </div>
             </center>
         </div>
+<script>
+
+document.getElementById('coucou').style.display = 'none';
+    function saisir()
+    {
+        if (document.getElementById('coucou').style.display == 'none')
+        {
+             document.getElementById('coucou').style.display = 'block';
+        }
+        else
+        {
+             document.getElementById('coucou').style.display = 'none';
+        }
+
+
+    }
+</script>
+
 
         <h2> Du même auteur: </h2>
         <div class="table-responsive">
@@ -36,7 +84,7 @@
                                 <center>
                                     <img class="cellLivre" src="{{a.IllustrationLivre}}"/></br>
                                     Auteur: {{a.NomAuteur}}</br>
-                                    Prix: {{a.PrixLivre}}€
+                                    Prix: {{a.PrixLivre}}€</br>
                                     {{a.LibelleDisponibilite}}</br>
                                 </center>
                             </a>
@@ -47,7 +95,7 @@
                                 <center>
                                     <img class="cellLivre" src="{{a.IllustrationLivre}}"/></br>
                                     Auteur: {{a.NomAuteur}}</br>
-                                    Prix: {{a.PrixLivre}}€
+                                    Prix: {{a.PrixLivre}}€</br>
                                     {{a.LibelleDisponibilite}}</br>
                                 </center>
                             </a>
