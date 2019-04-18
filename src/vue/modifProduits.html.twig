@@ -1,0 +1,38 @@
+{% extends "base.html.twig" %}
+{% block title %} {{ parent() }} Administration {% endblock %}
+
+{% block contenu %}
+
+    
+    
+<div class="panel panel-primary">
+
+        <div class="panel-heading">Modifier un produit </div>
+         <div class="panel-body">
+             {% for prod in liste %}
+            <form  class="form-signin" action="index.php?page=modifProduit" method="post" enctype="application/x-www-form-urlencoded">
+                
+                <label for="inputDesignation" class="sr-only">Designation</label>
+                <input type="text" id="inputDesignation" name="inputDesignation" class="form-control" value="{{prod.designation}}" />
+                
+                <label for="inputDescription" class="sr-only">Description</label>
+                <textarea class="form-control" name="inputDescription" rows="5">{{ prod.description }}</textarea>
+                
+                <label for="inputPrix" class="sr-only">Prix</label>
+                <input type="number" step="0.01" class="form-control" name="inputPrix" value="{{prod.prix}}" />
+                
+                <label for="inputType" class="sr-only">Type</label>
+                <select name="inputType" id="inputType" class="form-control">
+                    <option value="{{prod.idType}}">{{prod.libelle}}</option>
+                        {% for type in types %}
+                            <option value="{{type.ntype}}">{{type.libelle}}</option>
+                        {% endfor %}
+                </select>
+                <input type="hidden" name="id" value="{{prod.id}}" />
+                <button class="btn btn-lg btn-primary btn-block" type="submit" name="btModifProduit">Modifier</button>
+            </form>
+            {% endfor %}
+            
+         </div>    
+  </div>
+{% endblock %} 

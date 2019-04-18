@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+{% block title %} {{ parent() }} Administration {% endblock %}
+
+{% block contenu %}
+
+<div class="panel panel-primary">
+
+        <div class="panel-heading">Modifier un Auteur </div>
+         <div class="panel-body">
+            <form  class="form-signin" action="index.php?page=modifAuteur" method="post" enctype="application/x-www-form-urlencoded">
+                
+                <label for="inputLibelle" class="sr-only">{{auteur.NomAuteur}}</label>
+                <input type="text" id="inputLibelle" name="inputNom" class="form-control" value="{{auteur.NomAuteur}}" />
+                <input type="text" id="inputLibelle" name="inputPrenom" class="form-control" value="{{auteur.PrenomAuteur}}" />
+                <input type="date" id="inputLibelle" name="inputDateNaiss" class="form-control" value="{{auteur.DateNaissAuteur}}" />
+                <input type="text" id="inputLibelle" name="inputPays" class="form-control" value="{{auteur.PaysAuteur}}" />
+                <input type="hidden" name="id" value="{{auteur.IdAuteur}}" />
+                <button class="btn btn-lg btn-primary btn-block" type="submit" name="btModifA">Modifier</button>
+            </form>
+         </div>    
+  </div>
+{% endblock %} 

@@ -1,0 +1,27 @@
+{% extends "base.html.twig" %}
+{% block title %} {{ parent() }} Administration {% endblock %}
+
+{% block contenu %}
+
+    <div class="panel panel-primary">
+
+        <div class="panel-heading">Choisir un Livre </div>
+        {{form.id}}
+        
+            <table class="table table-hover table-striped">
+                <tr>
+                    <th>Illustration</th>
+                    <th>Titre</th>
+                </tr>
+                {% for l in liste %}
+                    <tr>
+                        <td><img src="{{l.IllustrationLivre}}" width="75"/></td>
+                        <td><a name="btChoixLivre" href="index.php?page=modifCoupCoeur&id={{form.id}}&idChoix={{l.IdLivre}}">{{l.TitreLivre}}</a></td>
+                        <input type="hidden" name="idModif" value="{{form.id}}" />
+                    </tr> 
+                {% endfor %}
+            </table>
+        
+    </div>
+                
+{% endblock %} 

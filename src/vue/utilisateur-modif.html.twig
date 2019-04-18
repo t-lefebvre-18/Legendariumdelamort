@@ -1,0 +1,51 @@
+{% extends "base.html.twig" %}
+{% block title %} {{ parent() }} Administration {% endblock %}
+
+{% block contenu %}
+    {% if form.valide is defined %}
+        {% if form.valide == true %}
+        {% else %}
+            <h1 class="h3 mb-3 font-weight-normal">Erreur</h1> 
+        {% endif %}
+     {% else %}
+    
+    
+    
+<div class="panel panel-primary">
+    {%if form.message is defined %}
+        <p>{{form.message}}</p>
+        {% endif %}
+        <div class="panel-heading">Modifier un utilisateur </div>
+         <div class="panel-body">
+             {% for u in liste %}
+            <form  class="form-signin" action="index.php?page=modifutilisateur" method="post" enctype="application/x-www-form-urlencoded">
+                
+                <label for="inputPassword" class="sr-only">Mot de passe :</label>
+                <input type="password" value="" name="inputPassword" class="form-control" placeholder="Mot de passe" />
+                
+                <label for="inputPassword2" class="sr-only">Confirmation du mot de passe :</label>
+                <input type="password" value="" name="inputPassword2" class="form-control" placeholder="Confirmation du mot de passe" />
+                
+                <label for="inputNom" class="sr-only">Nom:</label>
+                <input type="text" id="inputNom" name="inputNom" class="form-control" value="{{u.nom}}" placeholder="{{u.nom}}" />
+                
+                <label for="inputPrenom" class="sr-only">Prénom</label>
+                <input type="text" id="inputPrenom" name="inputPrenom" class="form-control" value="{{u.prenom}}" placeholder="{{u.prenom}}" />
+                
+                <select name="inputRole" class="form-control">
+                    <option value="{{ u.idRole }}">{{u.libellerole}}</option>
+                    {% for r in roles %}
+                        <option value="{{ r.id }}">{{r.libelle}}</option>
+                    {% endfor %}
+                </select>
+               
+                <input type="hidden" id="email" name="email"value="{{ u.email }}" />
+                
+                <button class="btn btn-lg btn-primary btn-block" type="submit" name="btModifUtilisateur">Modifier</button>
+            </form>
+            {% endfor %}
+            
+         </div>    
+  </div>
+{% endif %}
+{% endblock %} 

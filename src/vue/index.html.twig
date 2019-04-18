@@ -1,0 +1,74 @@
+{% extends "base.html.twig" %}
+{% block title %} {{ parent() }} Accueil {% endblock %}
+
+{% block contenu %}
+
+<!--
+../web/images/LivreBase.jpg
+../web/images/bm_25168-1173694.jpg
+../web/images/jeux-role-univers-donjons-dragons.jpg
+-->
+
+
+<div class="slideshow-remi">
+    {% for c in CC %}
+        <center class="mySlides1 w3-animate-opacity">
+            <img src="{{c.IllustrationLivre}}" width="270" height="370"></br>
+            <a class="slide-remi" href="#"> {{c.TitreLivre}} - ({{c.NomAuteur}})</a></br>
+        </center>
+    {% endfor %}
+<center>
+    <button class="button" onclick="plusSlides(-1, 0);">&#10094;</button>
+    <button class="button" onclick="plusSlides(1, 0);">&#10095;</button>
+</center>
+</div>
+
+
+
+<div class="slideshow2-remi">
+    {% for e in event %}    
+        <center class="mySlides2 w3-animate-opacity">
+            <img src="{{e.IllustrationEvent}}" width="720" height="480"></br>
+            <a class="slide-remi" href="#"> {{e.TitreEvent}} - ({{e.DateEvent}})</a></br>
+        </center>
+    {% endfor %}
+</div>
+<center>
+    <button class="button" onclick="plusSlides(-1, 1);">&#10094;</button>
+    <button class="button" onclick="plusSlides(1, 1);">&#10095;</button>
+</center>
+
+
+
+
+
+
+
+
+
+<script>
+    
+var slideIndex = [1,1];
+/* Class the members of each slideshow group with different CSS classes */
+var slideId = ["mySlides1", "mySlides2"]
+showSlides(1, 0);
+showSlides(1, 1);
+
+function plusSlides(n, no) {
+  showSlides(slideIndex[no] += n, no);
+}
+
+function showSlides(n, no) {
+  var i;
+  var x = document.getElementsByClassName(slideId[no]);
+  if (n > x.length) {slideIndex[no] = 1}
+  if (n < 1) {slideIndex[no] = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  x[slideIndex[no]-1].style.display = "block";
+} 
+
+</script>
+
+{% endblock %} 

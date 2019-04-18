@@ -1,0 +1,21 @@
+{% extends "base.html.twig" %}
+{% block title %} {{ parent() }} Administration {% endblock %}
+
+{% block contenu %}
+
+    
+    
+<div class="panel panel-primary">
+
+        <div class="panel-heading">Modifier un type </div>
+         <div class="panel-body">
+            <form  class="form-signin" action="index.php?page=modifType" method="post" enctype="application/x-www-form-urlencoded">
+                
+                <label for="inputLibelle" class="sr-only">Libelle</label>
+                <input type="text" id="inputLibelle" name="inputLibelle" class="form-control" value="{{type.LibelleType}}" />
+                <input type="hidden" name="id" value="{{type.IdType}}" />
+                <button class="btn btn-lg btn-primary btn-block" type="submit" name="btModif">Modifier</button>
+            </form>
+         </div>    
+  </div>
+{% endblock %} 

@@ -1,0 +1,100 @@
+{% extends "base.html.twig" %}
+{% block title %} {{ parent() }} Administration {% endblock %}
+
+{% block contenu %}
+
+    {% if form.message is defined %}
+        <h1> Erreur : {{form.message}} </h1>
+    {% else %}
+        {% for l in liste %}
+            <h1> {{l.TitreLivre}} </h1>
+
+        <div class="panel panel-default">
+
+            <center>
+                <img src="{{l.IllustrationLivre}}" width="250"/></br>
+                Auteur : {{l.NomAuteur}}</br>
+                Genre : {{l.LibelleType}}</br>
+                Editeur : {{l.LibelleEditeur}}</br>
+                Prix : {{l.PrixLivre}} €</br>
+                Note : {{l.JaimeLivre}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="jaime"> + </button> </br>
+                <p style="color:{{l.CouleurDisponibilite}};">{{l.LibelleDisponibilite}}</p></br></br>
+                <div class="resume">
+                    {{l.ResumeLivre}}
+                </div>
+            </center>
+        </div>
+
+        <h2> Du même auteur: </h2>
+        <div class="table-responsive">
+            <table class="table table-hover table-striped">
+                {% set compte = 1 %}
+                {% for a in listea %}
+                    {% if compte < 4 %}
+                        <td>
+                            <a href="index.php?page=livre&id={{a.IdLivre}}" style="color:{{a.CouleurDisponibilite}};">
+                                <center>
+                                    <img class="cellLivre" src="{{a.IllustrationLivre}}"/></br>
+                                    Auteur: {{a.NomAuteur}}</br>
+                                    Prix: {{a.PrixLivre}}€
+                                    {{a.LibelleDisponibilite}}</br>
+                                </center>
+                            </a>
+                        </td>
+                    {% else %}
+                        <td>
+                            <a href="index.php?page=livre&id={{a.IdLivre}}" style="color:{{a.CouleurDisponibilite}}">
+                                <center>
+                                    <img class="cellLivre" src="{{a.IllustrationLivre}}"/></br>
+                                    Auteur: {{a.NomAuteur}}</br>
+                                    Prix: {{a.PrixLivre}}€
+                                    {{a.LibelleDisponibilite}}</br>
+                                </center>
+                            </a>
+                        </td>
+                        <tr>
+                        {% set  compte = 0 %}
+                    {% endif %}
+                    {% set compte = compte + 1 %}
+                {% endfor %}
+            </table>
+        </div>
+
+        <h2> Du même genre: </h2>
+        <div class="table-responsive">
+            <table class="table table-hover table-striped">
+                {% set compte = 1 %}
+                {% for g in listeg %}
+                    {% if compte < 4 %}
+                        <td>
+                            <a href="index.php?page=livre&id={{g.IdLivre}}" style="color:{{g.CouleurDisponibilite}};">
+                                <center>
+                                    <img class="cellLivre" src="{{g.IllustrationLivre}}"/></br>
+                                    Auteur: {{g.NomAuteur}}</br>
+                                    Prix: {{g.PrixLivre}}€</br>
+                                    {{g.LibelleDisponibilite}}
+                                </center>
+                            </a>
+                        </td>
+                    {% else %}
+                        <td>
+                            <a href="index.php?page=livre&id={{g.IdLivre}}" style="color:{{g.CouleurDisponibilite}}">
+                                <center>
+                                    <img class="cellLivre" src="{{g.IllustrationLivre}}"/></br>
+                                    Auteur: {{g.NomAuteur}}</br>
+                                    Prix: {{g.PrixLivre}}€</br>
+                                    {{g.LibelleDisponibilite}}
+                                </center>
+                            </a>
+                        </td>
+                        <tr>
+                        {% set  compte = 0 %}
+                    {% endif %}
+                    {% set compte = compte + 1 %}
+                {% endfor %}
+            </table>
+        </div>
+
+        {% endfor %}
+    {% endif %}
+{% endblock %}

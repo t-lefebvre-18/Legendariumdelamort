@@ -1,0 +1,167 @@
+<?php
+function actionAccueil($twig, $db)
+{
+    $form = array();
+    $type = new Type($db);
+    $cc = new CoupCoeur($db);
+    $event = new Event($db);
+    $types = $type->select();
+    $listeCC = $cc->select();
+    $listeEvent = $event->select();
+    echo $twig->render('index.html.twig', array('form'=>$form,'types'=>$types, 'CC'=>$listeCC, 'event'=>$listeEvent));
+}
+
+function actionInscription($twig, $db)
+{
+    $form = array();
+    if(isset($_POST['btInscrire'])){
+        $inputEmail = $_POST['inputEmail'];
+        $inputPassword = $_POST['inputPassword'];
+        $inputPassword2 = $_POST['inputPassword2'];
+        $role = $_POST['role'];
+        $form['valide'] = true;
+        if($inputPassword!= $inputPassword2)
+        {
+            $form['valide'] = false;
+            $form['message'] = 'Les mots de passe sont différents';
+        }
+        else
+        {
+            $utilisateur = new Utilisateur($db);
+            $exec = $utilisateur->insert($inputEmail, password_hash($inputPassword, PASSWORD_DEFAULT), $role);
+            if(!$exec)
+            {
+                $form['valide'] = false;
+                $form['message'] = 'Problème d\'insertion dans la table utilisateur.';
+            }
+        }
+        $form['email'] = $inputEmail;
+        $form['role'] = $role;
+    }
+    echo $twig->render('inscription.html.twig', array('form' => $form));
+}
+
+function actionConnexion($twig, $db)
+{
+    $form = array();
+    if (isset($_POST['btConnecter']))
+    {
+        $inputEmail = $_POST['inputEmail'];
+        $inputPassword = $_POST['inputPassword'];
+
+        $utilisateur = new Utilisateur($db);
+        $unUtilisateur = $utilisateur->connect($inputEmail);
+        var_dump($unUtilisateur['MdpUtilisateur']);
+        if ($unUtilisateur != null)
+        {
+            if (!password_verify($inputPassword, $unUtilisateur['MdpUtilisateur']))
+            {
+                $form['valide'] = false;
+                $form['message'] = 'Login ou mot de passe incorrect.';
+            }
+            else
+            {
+                $_SESSION['login'] = $inputEmail;
+                $_SESSION['role'] = $unUtilisateur['RoleUtilisateur'];
+                header("Location:index.php");
+            }
+        }
+        else
+        {
+            $form['valide'] = false;
+            $form['message'] = 'Login ou mot de passe incorrect';
+        }
+    }
+    echo $twig->render('connexion.html.twig', array('form' => $form));
+}
+
+function actionApropos($twig){
+    echo $twig->render('apropos.html.twig', array());
+}
+
+function actionMentions($twig){
+    echo $twig->render('mentions.html.twig', array());
+}
+
+function actionDeconnexion($twig){
+    session_unset();
+    session_destroy();
+    header("Location:index.php");
+}
+
+function actionMaintenance($twig){
+    echo $twig->render('maintenance.html.twig', array());
+}
+
+function actionGestion_utilisateurs($twig){
+    echo $twig->render('gestion_utilisateurs.html.twig', array());
+}
+
+function actionGestion_types($twig){
+    echo $twig->render('gestion_types.html.twig', array());
+}
+
+function actionLibrairie($twig, $db)
+{
+    $form = array();
+    $livre = new Livre($db);
+
+    if(isset($_GET['id']))
+    {
+        $id = $_GET['id'];
+        $form['id'] = $id;
+    }
+    else
+        $id = NULL;
+
+    if(isset($_GET['trier']))
+        $trier = $_GET['trier'];
+    else
+        $trier = NULL;
+
+    if($id != NULL && $trier != NULL)
+    {
+        if($trier == 1)
+            $trier = "SortieLivre";
+        elseif($trier == 2)
+            $trier = "JaimeLivre";
+        elseif($trier == 3)
+            $trier = "PrixLivre";
+        elseif($trier == 4)
+            $trier = "PrixLivre desc";
+        else
+            $trier = "TitreLivre";
+        //$listeLivre = $livre->selectIT($id, $trier);
+        $listeLivre = $db->query("select * from Livre "
+                                    . "inner join Type on Livre.TypeLivre=Type.IdType "
+                                    . "inner join Auteur on Livre.Auteur=Auteur.IdAuteur "
+                                    . "inner join Editeur on Livre.Editeur=Editeur.IdEditeur "
+                                    . "inner join Disponibilite on Livre.DispoLivre=Disponibilite.IdDisponibilite "
+                                    . "where TypeLivre = $id order by $trier");
+    }
+    else if($id != NULL)
+        $listeLivre = $livre->selectI($id);
+    else if($trier != NULL)
+    {
+        if($trier == 1)
+            $trier = "SortieLivre";
+        elseif($trier == 2)
+            $trier = "JaimeLivre";
+        elseif($trier == 3)
+            $trier = "PrixLivre";
+        elseif($trier == 4)
+            $trier = "PrixLivre desc";
+        else
+            $trier = "TitreLivre";
+        $listeLivre = $db->query("select * from Livre "
+                               . "inner join Type on Livre.TypeLivre=Type.IdType "
+                               . "inner join Auteur on Livre.Auteur=Auteur.IdAuteur "
+                               . "inner join Editeur on Livre.Editeur=Editeur.IdEditeur "
+                               . "inner join Disponibilite on Livre.DispoLivre=Disponibilite.IdDisponibilite "
+                               . "order by $trier");
+    }
+    else
+        $listeLivre = $livre->select();
+
+    echo $twig->render('librairie.html.twig', array('form'=>$form,'liste'=>$listeLivre));
+}
