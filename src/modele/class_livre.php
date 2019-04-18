@@ -14,7 +14,7 @@ class Livre {
     private $selectByID;
     private $update;
     private $search;
-    private $coucou;
+    
     public function __construct($db)
     {
         $this->db = $db;
