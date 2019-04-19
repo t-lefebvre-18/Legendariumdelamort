@@ -30,6 +30,7 @@ $lesPages['gestionEvent'] = 'actionEvent;1';
 $lesPages['modifEvent'] = 'actionModifEvent;1';
 $lesPages['librairie'] = 'actionLibrairie;0';
 $lesPages['livre'] = 'actionPresLivre;0';
+$lesPages['gestionReservation'] = 'actionReservation;1';
 
 if ($db != null)
 {

@@ -200,3 +200,10 @@ h1 {
     margin-right: 20%;
     border-radius: 3px;
 }
+
+.map
+{
+    width: 350px;
+    height: 350px;
+    border:0;
+}

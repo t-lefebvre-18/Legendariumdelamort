@@ -1,0 +1,46 @@
+{% extends "base.html.twig" %}
+{% block title %} {{ parent() }} Administration {% endblock %}
+
+{% block contenu %}
+
+    <h1>Administration - Gestion des Réservations </h1>
+
+<div class="panel panel-default">
+
+    <div class="panel panel-default">
+        <!-- Table -->
+        <div class="table-responsive">
+            <table class="table table-hover table-striped">
+                <tr>
+                    <th>Numéro de la réservation</th>
+                    <th>Livre</th>
+                    <th>Auteur</th>
+                    <th>Edition</th>
+                    <th>Prix du livre</th>
+                    <th>Pseudonyme</th>
+                    <th></th>
+                </tr>
+                {% for r in liste %}
+                    <tr>
+                        <td>{{r.IdReservation}}</td>
+                        <td><img src="{{r.IllustrationLivre}}" width="100"/></td>
+                        <td>{{r.TitreLivre}}</td>
+                        <td>{{r.NomAuteur}}</td>
+                        <td>{{r.LibelleEdition}}</td>
+                        <td>{{r.PrixLivre}}€</td>
+                        <td>{{r.UtilisateurReservation}}</td>
+                        <td><div class="btn-group btn-group-lg">
+                                <form action="index.php?page=gestionReservation" method="post">
+                                    <input type="hidden" name="idReserv" value="{{r.IdReservation}}" />
+                                    <button name="btSupReserv"><span class='glyphicon glyphicon-trash' aria-hidden='true'></span></button>
+                                </form>
+                            </div></td>
+                    </tr>
+                    {% set compte = compte + 1%}
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
