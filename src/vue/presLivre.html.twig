@@ -32,9 +32,9 @@
                     Prix : {{l.PrixLivre}} €</br>
                     Note : {{l.JaimeLivre}}
 
-                    <form action="index.php?page=livre" method="post">
-                        <input type="hidden" name="idJaime" value="{{l.IdLivre}}"/>
-                        <button class="jaime"><span class="glyphicon glyphicon-thumbs-up" name="btJaime" aria-hidden="true"/></button></br>
+                    <form action="index.php?page=livre&id={{l.IdLivre}}" method="post">
+                        <input type="hidden" name="idLivre" value="{{l.IdLivre}}"/>
+                        <button {% if form.valideIP==true %} class="jaime" {% else %} class="jaimeVert" {% endif %}name="btJaime"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"/></button></br>
                     </form>
                     <p style="color:{{l.CouleurDisponibilite}};">{{l.LibelleDisponibilite}}</p></br>
 

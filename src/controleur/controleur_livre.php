@@ -93,11 +93,25 @@ function actionPresLivre($twig, $db)
     $livre = new Livre($db);
     $form = array();
 
+    if(isset($_POST['btJaime']))
+    {
+        $idLivre = $_POST['idLivre'];
+        $adresseIP = $_SERVER['REMOTE_ADDR'];
+        $exec1 = $livre->selectIP($adresseIP, $idLivre);
+        if(empty($exec1))
+        {
+            $exec = $livre->insertIP($adresseIP, $idLivre);
+        }
+        else
+            $exec = $livre->deleteIP($adresseIP, $idLivre);
+    }
+
+
     if(isset($_POST['btReserver']))
     {
         if(isset($_POST['inputPseudo']))
         {
-            if($_POST['inputPseudo']!='')
+            if(!empty($_POST['inputPseudo']))
             {
                 $id = $_POST['idLivre'];
                 $pseudo = $_POST['inputPseudo'];
@@ -137,7 +151,7 @@ function actionPresLivre($twig, $db)
     if(isset($_GET['id']))
     {
         $id = $_GET['id'];
-        if($id!='')
+        if(!empty($id))
         {
             $liste = $livre->selectByID($id);
             if(count($liste[0])>1)
@@ -215,6 +229,12 @@ function actionPresLivre($twig, $db)
                         $k = $k-1;
                     }
                 }
+                $adresseIP = $_SERVER['REMOTE_ADDR'];
+                $listeIP = $livre->selectIP($adresseIP, $id);
+                if(empty($listeIP))
+                    $form['valideIP'] = true;
+                else
+                    $form['valideIP'] = false;
             }
             else
             {

@@ -172,7 +172,7 @@ h1 {
 
 
 .jaime
-{
+{/*#21a436*/
   background-color: #2175a5;
   border: none;
   color: white;
@@ -189,6 +189,26 @@ h1 {
 {
     background-color: rgba(51,144,255,0.3);
     color : #2175a5;
+}
+
+.jaimeVert
+{
+  background-color: #21a436;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  border-style: solid;
+  transition: 0.6s ease;
+  border-width: 1px;
+  border-color: #21a436;
+}
+.jaimeVert:hover
+{
+    background-color: rgba(51, 255, 114, 0.3);
+    color : #21a436;
 }
 
 .resume

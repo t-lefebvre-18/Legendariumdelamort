@@ -3,12 +3,15 @@
 
 {% block contenu %}
 
-<!--
-../web/images/LivreBase.jpg
-../web/images/bm_25168-1173694.jpg
-../web/images/jeux-role-univers-donjons-dragons.jpg
--->
-
+<div>
+    Bienvenue la librairie d'Arras : Légendarium ! Ici arrageois, arrageoise ainsi que tout les Habitants proche de la ville
+    d'Arras pourront venir profiter des conseils de Pierre, le gérant ainsi que ses associés pour savoir quel sera le meilleur
+    livre pour vous. Si vous êtes un passioné de lecture et que vous aimez la littérature fantastique, ce libraire est fait pourront
+    vous ! Vous êtes plus un joueur ou une joueuse ? Pas de problème ! Des jeux de rôles sont organisés tout les mois ! Venez partager
+    un moment avec les autres joueurs role-player d'Arras ! Des évenements et des rencontres sont aussi organisés régulièrement
+    afin de vous faire découvrir de nouveaux livres et de nouveaux auteurs et ainsi partager votre passion pour la lecture.
+    De nouveaux livres débarqueront chaque mois afin de rassasier votre envie de lire !
+</div>
 
 <div class="slideshow-remi">
     {% for c in CC %}
@@ -26,7 +29,7 @@
 
 
 <div class="slideshow2-remi">
-    {% for e in event %}    
+    {% for e in event %}
         <center class="mySlides2 w3-animate-opacity">
             <img src="{{e.IllustrationEvent}}" width="720" height="480"></br>
             <a class="slide-remi" href="#"> {{e.TitreEvent}} - ({{e.DateEvent}})</a></br>
@@ -47,7 +50,7 @@
 
 
 <script>
-    
+
 var slideIndex = [1,1];
 /* Class the members of each slideshow group with different CSS classes */
 var slideId = ["mySlides1", "mySlides2"]
@@ -67,8 +70,8 @@ function showSlides(n, no) {
     x[i].style.display = "none";
   }
   x[slideIndex[no]-1].style.display = "block";
-} 
+}
 
 </script>
 
-{% endblock %} 
+{% endblock %}

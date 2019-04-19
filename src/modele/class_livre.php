@@ -16,6 +16,9 @@ class Livre {
     private $search;
     private $reservation;
     private $idReservation;
+    private $insertIP;
+    private $selectIP;
+    private $deleteIP;
 
     public function __construct($db)
     {
@@ -64,8 +67,44 @@ class Livre {
         $this->search = $db->prepare("select * from Livre where TitreLivre = :search");
         $this->reservation = $db->prepare("insert into Reservation(LivreReservation, UtilisateurReservation) values(:id, :pseudo)");
         $this->idReservation = $db->prepare("select max(IdReservation) from Reservation");
+        $this->selectIP = $db->prepare("select * from EnregistrementIP where AdresseIP=:adresse and LivreIP=:idLivre");
+        $this->deleteIP = $db->prepare("delete from EnregistrementIP where AdresseIP=:adresse and LivreIP=:idLivre");
+        $this->insertIP = $db->prepare("insert into EnregistrementIP(AdresseIP, LivreIP) values(:adresse, :idLivre)");
    }
 
+   public function deleteIP($adresse, $idLivre)
+   {
+       $r = true;
+       $this->deleteIP->execute(array(':adresse'=>$adresse, ':idLivre'=>$idLivre));
+       if ($this->deleteIP->errorCode() != 0)
+       {
+           print_r($this->deleteIP->errorInfo());
+           $r = false;
+       }
+       return $r;
+   }
+
+   public function insertIP($adresse, $idLivre)
+   {
+       $r = true;
+       $this->insertIP->execute(array(':adresse'=>$adresse, ':idLivre'=>$idLivre));
+       if ($this->insertIP->errorCode() != 0)
+       {
+           print_r($this->insertIP->errorInfo());
+           $r = false;
+       }
+       return $r;
+   }
+
+   public function selectIP($ip, $idLivre)
+   {
+       $this->selectIP->execute(array(':adresse'=>$ip, ':idLivre'=>$idLivre));
+       if ($this->selectIP->errorCode() != 0)
+       {
+           print_r($this->selectIP->errorInfo());
+       }
+       return $this->selectIP->fetchAll();
+   }
 
    public function reservation($id, $pseudo)
    {
