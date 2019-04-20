@@ -19,6 +19,8 @@ class Livre {
     private $insertIP;
     private $selectIP;
     private $deleteIP;
+    private $actuLike;
+    private $selectDN;
 
     public function __construct($db)
     {
@@ -64,12 +66,51 @@ class Livre {
         $this->update = $db->prepare("update Livre set TitreLivre = :titre, Auteur = :auteur, Editeur = :editeur, AnneeLivre = :annee, TypeLivre = :type, "
                                    . "ISBNLivre = :isbn, ResumeLivre = :resume, DispoLivre = :dispo, PrixLivre = :prix, NbrExemplaireLivre = :nbrexemplaire "
                                    . "where Idlivre = :id");
-        $this->search = $db->prepare("select * from Livre where TitreLivre = :search");
+        $this->search = $db->prepare("select * from Livre where TitreLivre like ':search%'");
         $this->reservation = $db->prepare("insert into Reservation(LivreReservation, UtilisateurReservation) values(:id, :pseudo)");
         $this->idReservation = $db->prepare("select max(IdReservation) from Reservation");
         $this->selectIP = $db->prepare("select * from EnregistrementIP where AdresseIP=:adresse and LivreIP=:idLivre");
         $this->deleteIP = $db->prepare("delete from EnregistrementIP where AdresseIP=:adresse and LivreIP=:idLivre");
         $this->insertIP = $db->prepare("insert into EnregistrementIP(AdresseIP, LivreIP) values(:adresse, :idLivre)");
+        $this->actuLike = $db->prepare("update Livre set JaimeLivre=(select count(IdIP) from EnregistrementIP where LivreIP=:idLivre) where IdLivre=:idLivre");
+        $this->selectDN = $db->prepare("select * from Livre "
+                                       . "inner join Type on Livre.TypeLivre=Type.IdType "
+                                       . "inner join Auteur on Livre.Auteur=Auteur.IdAuteur "
+                                       . "inner join Editeur on Livre.Editeur=Editeur.IdEditeur "
+                                       . "inner join Disponibilite on Livre.DispoLivre=Disponibilite.IdDisponibilite "
+                                       . "order by SortieLivre desc");
+   }
+
+   public function selectDN()
+   {
+       $this->selectDN->execute();
+       if ($this->selectDN->errorCode() != 0)
+       {
+           print_r($this->selectDN->errorInfo());
+       }
+       return $this->selectDN->fetchAll();
+   }
+
+   public function search($search)
+   {
+       $this->search->execute(array(':search'=>$search));
+       if ($this->search->errorCode() != 0)
+       {
+           print_r($this->search->errorInfo());
+       }
+       return $this->search->fetchAll();
+   }
+
+   public function actuLike($idLivre)
+   {
+       $r = true;
+       $this->actuLike->execute(array(':idLivre'=>$idLivre));
+       if ($this->actuLike->errorCode() != 0)
+       {
+           print_r($this->actuLike->errorInfo());
+           $r = false;
+       }
+       return $r;
    }
 
    public function deleteIP($adresse, $idLivre)
@@ -126,16 +167,6 @@ class Livre {
            print_r($this->idReservation->errorInfo());
        }
        return $this->idReservation->fetchAll();
-   }
-
-   public function search($search)
-   {
-       $this->search->execute(array(':search'=>$search));
-       if ($this->search->errorCode() != 0)
-       {
-           print_r($this->search->errorInfo());
-       }
-       return $this->search->fetchAll();
    }
 
     public function select()

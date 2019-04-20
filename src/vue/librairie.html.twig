@@ -5,10 +5,13 @@
 
 
 <form action="index.php?page=librairie" method="post" enctype="application/x-www-form-urlencoded">
-    <input class="form-control mr-sm-2" type="search" name="Search" placeholder="Rechercher" arialabel="Rechercher">
+    <input class="form-control mr-sm-2" type="search" name="search" placeholder="Rechercher" arialabel="Rechercher">
     <button class="btn btn-outline-success my-2 my-sm-0" name="btSearch" type="submit">OK</button>
 </form>
 
+{% if form.valideSearch is defined %}
+    <h5> Réseultats les plus pertinants pour la recherche : {{form.messageSearch}}</h5>
+{% endif %}
 
 <li class="dropdown">
     <a class="dropdown-toggle" href="" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Trier par :</a>

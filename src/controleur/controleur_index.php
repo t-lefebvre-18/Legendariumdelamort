@@ -5,10 +5,14 @@ function actionAccueil($twig, $db)
     $type = new Type($db);
     $cc = new CoupCoeur($db);
     $event = new Event($db);
+    $livre = new Livre($db);
     $types = $type->select();
     $listeCC = $cc->select();
     $listeEvent = $event->select();
-    echo $twig->render('index.html.twig', array('form'=>$form,'types'=>$types, 'CC'=>$listeCC, 'event'=>$listeEvent));
+    $listeDNprov = $livre->selectDN();
+    for($i = 0; $i<3; $i++)
+        $listeDN[$i]=$listeDNprov[$i];
+    echo $twig->render('index.html.twig', array('form'=>$form,'types'=>$types, 'CC'=>$listeCC, 'event'=>$listeEvent, "DN"=>$listeDN));
 }
 
 function actionInscription($twig, $db)
@@ -102,62 +106,118 @@ function actionLibrairie($twig, $db)
     $form = array();
     $livre = new Livre($db);
 
-    if(isset($_GET['id']))
+    if(isset($_POST['btSearch']))
     {
-        $id = $_GET['id'];
-        $form['id'] = $id;
-    }
-    else
-        $id = NULL;
-
-    if(isset($_GET['trier']))
-        $trier = $_GET['trier'];
-    else
-        $trier = NULL;
-
-    if($id != NULL && $trier != NULL)
-    {
-        if($trier == 1)
-            $trier = "SortieLivre";
-        elseif($trier == 2)
-            $trier = "JaimeLivre";
-        elseif($trier == 3)
-            $trier = "PrixLivre";
-        elseif($trier == 4)
-            $trier = "PrixLivre desc";
-        else
-            $trier = "TitreLivre";
-        //$listeLivre = $livre->selectIT($id, $trier);
-        $listeLivre = $db->query("select * from Livre "
+        $search = $_POST['search'];
+        $form['valideSearch'] = true;
+        $form['messageSearch'] = $search;
+        $i = 0;
+        $listeLivre = array();
+        $resultatSearch1 = $db->query("select * from Livre "
                                     . "inner join Type on Livre.TypeLivre=Type.IdType "
                                     . "inner join Auteur on Livre.Auteur=Auteur.IdAuteur "
                                     . "inner join Editeur on Livre.Editeur=Editeur.IdEditeur "
                                     . "inner join Disponibilite on Livre.DispoLivre=Disponibilite.IdDisponibilite "
-                                    . "where TypeLivre = $id order by $trier");
-    }
-    else if($id != NULL)
-        $listeLivre = $livre->selectI($id);
-    else if($trier != NULL)
-    {
-        if($trier == 1)
-            $trier = "SortieLivre";
-        elseif($trier == 2)
-            $trier = "JaimeLivre";
-        elseif($trier == 3)
-            $trier = "PrixLivre";
-        elseif($trier == 4)
-            $trier = "PrixLivre desc";
-        else
-            $trier = "TitreLivre";
-        $listeLivre = $db->query("select * from Livre "
-                               . "inner join Type on Livre.TypeLivre=Type.IdType "
-                               . "inner join Auteur on Livre.Auteur=Auteur.IdAuteur "
-                               . "inner join Editeur on Livre.Editeur=Editeur.IdEditeur "
-                               . "inner join Disponibilite on Livre.DispoLivre=Disponibilite.IdDisponibilite "
-                               . "order by $trier");
+                                    . "where TitreLivre like '%$search%'");
+        $resultatSearch[0]=$resultatSearch1;
+        $resultatSearch2 = $db->query("select * from Livre "
+                                    . "inner join Type on Livre.TypeLivre=Type.IdType "
+                                    . "inner join Auteur on Livre.Auteur=Auteur.IdAuteur "
+                                    . "inner join Editeur on Livre.Editeur=Editeur.IdEditeur "
+                                    . "inner join Disponibilite on Livre.DispoLivre=Disponibilite.IdDisponibilite "
+                                    . "where NomAuteur like '%$search%'");
+        $resultatSearch[1]=$resultatSearch2;
+        $resultatSearch3 = $db->query("select * from Livre "
+                                    . "inner join Type on Livre.TypeLivre=Type.IdType "
+                                    . "inner join Auteur on Livre.Auteur=Auteur.IdAuteur "
+                                    . "inner join Editeur on Livre.Editeur=Editeur.IdEditeur "
+                                    . "inner join Disponibilite on Livre.DispoLivre=Disponibilite.IdDisponibilite "
+                                    . "where LibelleEditeur like '%$search%'");
+        $resultatSearch[2]=$resultatSearch3;
+        $resultatSearch4 = $db->query("select * from Livre "
+                                    . "inner join Type on Livre.TypeLivre=Type.IdType "
+                                    . "inner join Auteur on Livre.Auteur=Auteur.IdAuteur "
+                                    . "inner join Editeur on Livre.Editeur=Editeur.IdEditeur "
+                                    . "inner join Disponibilite on Livre.DispoLivre=Disponibilite.IdDisponibilite "
+                                    . "where ResumeLivre like '%$search%'");
+        $resultatSearch[3]=$resultatSearch4;
+        foreach($resultatSearch as $RS)
+        {
+            foreach($RS as $coucou)
+            {
+                $idpossible = true;
+                foreach($listeLivre as $id)
+                {
+                    if($coucou["IdLivre"]==$id["IdLivre"])
+                        $idpossible = false;
+                }
+                if($idpossible)
+                {
+                    $listeLivre[$i]=$coucou;
+                    $i++;
+                }
+            }
+        }
     }
     else
-        $listeLivre = $livre->select();
+    {
+        if(isset($_GET['id']))
+        {
+            $id = $_GET['id'];
+            $form['id'] = $id;
+        }
+        else
+            $id = NULL;
+
+        if(isset($_GET['trier']))
+            $trier = $_GET['trier'];
+        else
+            $trier = NULL;
+
+        if($id != NULL && $trier != NULL)
+        {
+            if($trier == 1)
+                $trier = "SortieLivre";
+            elseif($trier == 2)
+                $trier = "JaimeLivre desc";
+            elseif($trier == 3)
+                $trier = "PrixLivre";
+            elseif($trier == 4)
+                $trier = "PrixLivre desc";
+            else
+                $trier = "TitreLivre";
+            //$listeLivre = $livre->selectIT($id, $trier);
+            $listeLivre = $db->query("select * from Livre "
+                                        . "inner join Type on Livre.TypeLivre=Type.IdType "
+                                        . "inner join Auteur on Livre.Auteur=Auteur.IdAuteur "
+                                        . "inner join Editeur on Livre.Editeur=Editeur.IdEditeur "
+                                        . "inner join Disponibilite on Livre.DispoLivre=Disponibilite.IdDisponibilite "
+                                        . "where TypeLivre = $id order by $trier");
+        }
+        else if($id != NULL)
+            $listeLivre = $livre->selectI($id);
+        else if($trier != NULL)
+        {
+            if($trier == 1)
+                $trier = "SortieLivre";
+            elseif($trier == 2)
+                $trier = "JaimeLivre";
+            elseif($trier == 3)
+                $trier = "PrixLivre";
+            elseif($trier == 4)
+                $trier = "PrixLivre desc";
+            else
+                $trier = "TitreLivre";
+            $listeLivre = $db->query("select * from Livre "
+                                   . "inner join Type on Livre.TypeLivre=Type.IdType "
+                                   . "inner join Auteur on Livre.Auteur=Auteur.IdAuteur "
+                                   . "inner join Editeur on Livre.Editeur=Editeur.IdEditeur "
+                                   . "inner join Disponibilite on Livre.DispoLivre=Disponibilite.IdDisponibilite "
+                                   . "order by $trier");
+        }
+        else
+            $listeLivre = $livre->select();
+    }
     $type = new Type($db);
     $types = $type->select();
     echo $twig->render('librairie.html.twig', array('form'=>$form,'liste'=>$listeLivre, 'types'=>$types));

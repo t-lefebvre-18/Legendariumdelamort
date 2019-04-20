@@ -3,7 +3,7 @@
 
 {% block contenu %}
 
-<div>
+<center><div>
     Bienvenue la librairie d'Arras : Légendarium ! Ici arrageois, arrageoise ainsi que tout les Habitants proche de la ville
     d'Arras pourront venir profiter des conseils de Pierre, le gérant ainsi que ses associés pour savoir quel sera le meilleur
     livre pour vous. Si vous êtes un passioné de lecture et que vous aimez la littérature fantastique, ce libraire est fait pourront
@@ -11,34 +11,50 @@
     un moment avec les autres joueurs role-player d'Arras ! Des évenements et des rencontres sont aussi organisés régulièrement
     afin de vous faire découvrir de nouveaux livres et de nouveaux auteurs et ainsi partager votre passion pour la lecture.
     De nouveaux livres débarqueront chaque mois afin de rassasier votre envie de lire !
-</div>
+</div></center>
 
-<div class="slideshow-remi">
-    {% for c in CC %}
+<section class="slideshow-remi">
+    <center><h2> Les dernières nouveautés </h2></center>
+    <img src="../web/images/nouveautes.png" class="nouveates_img"/>
+    {% for d in DN %}
         <center class="mySlides1 w3-animate-opacity">
+            <img src="{{d.IllustrationLivre}}" width="270" height="370"></br>
+            <a class="slide-remi" href="#"> {{d.TitreLivre}} - ({{d.NomAuteur}})</a></br>
+        </center>
+    {% endfor %}
+    <center>
+        <button class="button" onclick="plusSlides(-1, 0);">&#10094;</button>
+        <button class="button" onclick="plusSlides(1, 0);">&#10095;</button>
+    </center>
+</section>
+
+<section class="slideshow2-remi">
+    <center><h2> Les coups de coeurs </h2></center>
+    <img src="../web/images/coupcoeur.png" class="coupcoeur_img"/>
+    {% for c in CC %}
+        <center class="mySlides2 w3-animate-opacity">
             <img src="{{c.IllustrationLivre}}" width="270" height="370"></br>
             <a class="slide-remi" href="#"> {{c.TitreLivre}} - ({{c.NomAuteur}})</a></br>
         </center>
     {% endfor %}
-<center>
-    <button class="button" onclick="plusSlides(-1, 0);">&#10094;</button>
-    <button class="button" onclick="plusSlides(1, 0);">&#10095;</button>
-</center>
-</div>
+    <center>
+        <button class="button" onclick="plusSlides(-1, 1);">&#10094;</button>
+        <button class="button" onclick="plusSlides(1, 1);">&#10095;</button>
+    </center>
+</section>
 
-
-
-<div class="slideshow2-remi">
+<div class="slideshow3-remi">
+    <center><h2> Les évevenment de votre Librairie </h2></center>
     {% for e in event %}
-        <center class="mySlides2 w3-animate-opacity">
+        <center class="mySlides3 w3-animate-opacity">
             <img src="{{e.IllustrationEvent}}" width="720" height="480"></br>
             <a class="slide-remi" href="#"> {{e.TitreEvent}} - ({{e.DateEvent}})</a></br>
         </center>
-    {% endfor %}
+    {% endfor %}s
 </div>
 <center>
-    <button class="button" onclick="plusSlides(-1, 1);">&#10094;</button>
-    <button class="button" onclick="plusSlides(1, 1);">&#10095;</button>
+    <button class="button" onclick="plusSlides(-1, 2);">&#10094;</button>
+    <button class="button" onclick="plusSlides(1, 2);">&#10095;</button>
 </center>
 
 
@@ -51,11 +67,12 @@
 
 <script>
 
-var slideIndex = [1,1];
+var slideIndex = [1,1,1];
 /* Class the members of each slideshow group with different CSS classes */
-var slideId = ["mySlides1", "mySlides2"]
+var slideId = ["mySlides1", "mySlides2", "mySlides3"]
 showSlides(1, 0);
 showSlides(1, 1);
+showSlides(1, 2);
 
 function plusSlides(n, no) {
   showSlides(slideIndex[no] += n, no);

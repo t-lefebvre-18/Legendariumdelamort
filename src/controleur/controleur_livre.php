@@ -101,9 +101,13 @@ function actionPresLivre($twig, $db)
         if(empty($exec1))
         {
             $exec = $livre->insertIP($adresseIP, $idLivre);
+            $exec1 = $livre->actuLike($idLivre);
         }
         else
+        {
             $exec = $livre->deleteIP($adresseIP, $idLivre);
+            $exec1 = $livre->actuLike($idLivre);
+        }
     }
 
 

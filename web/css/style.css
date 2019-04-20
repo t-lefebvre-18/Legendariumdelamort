@@ -154,6 +154,10 @@ h1 {
     margin-top: 5%;
 }
 
+.slideshow3-remi
+{
+    margin-top: 5%;
+}
 .cellLivre
 {
     width: 160px;
@@ -226,4 +230,22 @@ h1 {
     width: 350px;
     height: 350px;
     border:0;
+}
+
+.nouveates_img
+{
+    position: absolute;
+    left: 40.4%;
+    z-index: 999;
+}
+
+.coupcoeur_img
+{
+    position: absolute;
+    margin-top: 1%;
+    left: 54%;
+    width: 70px;
+    height: 70px;
+    z-index: 999;
+    transform: rotate(30deg);
 }
