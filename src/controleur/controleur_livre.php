@@ -77,9 +77,11 @@ function actionModifLivre($twig, $db){
         $prix = $_POST['inputPrix'];
         $nbrexemplaire = $_POST['inputNbrExemplaire'];
         $update= $livre->update($id, $titre, $auteur, $editeur, $annee, $type, $isbn, $resume, $dispo, $prix, $nbrexemplaire);
+        $leLivre = $livre->selectByID($id);
+        if($leLivre[0][11] == 0)
+            $updateDispo = $livre->updateDispo($id);
         header("Location: index.php?page=gestionLivre");
     }
-
         $liste = $livre->selectByID($id);
         $types = $livre->listeType();
         $auteurs = $livre->listeAuteur();

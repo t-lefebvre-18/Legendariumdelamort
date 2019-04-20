@@ -21,6 +21,7 @@ class Livre {
     private $deleteIP;
     private $actuLike;
     private $selectDN;
+    private $updateDispo;
 
     public function __construct($db)
     {
@@ -79,6 +80,19 @@ class Livre {
                                        . "inner join Editeur on Livre.Editeur=Editeur.IdEditeur "
                                        . "inner join Disponibilite on Livre.DispoLivre=Disponibilite.IdDisponibilite "
                                        . "order by SortieLivre desc");
+        $this->updateDispo = $db->prepare("update Livre set DispoLivre = 2 where IdLivre=:id");
+   }
+
+   public function updateDispo($id)
+   {
+       $r = true;
+       $this->updateDispo->execute(array(':id'=>$id));
+       if ($this->updateDispo->errorCode() != 0)
+       {
+           print_r($this->updateDispo->errorInfo());
+           $r = false;
+       }
+       return $r;
    }
 
    public function selectDN()
