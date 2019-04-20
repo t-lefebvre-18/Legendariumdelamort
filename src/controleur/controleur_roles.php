@@ -3,7 +3,7 @@
 function actionRole($twig,$db){
     $form = array();
     $role = new Role($db);
-    
+
     if(isset($_POST['btAjout'])){
         $libelle = $_POST['inputLibelle'];
         $role->insert($libelle);
@@ -13,8 +13,11 @@ function actionRole($twig,$db){
         $role->delete($id);
     }
     $roles = $role->select();
-    echo $twig->render("roles.html.twig", array('form'=>$form, 'roles'=>$roles));
+    $type = new Type($db);
+    $types = $type->select();
+    echo $twig->render("roles.html.twig", array('form'=>$form, 'roles'=>$roles, 'types'=>$types));
 }
+
 function actionModifRole($twig, $db){
     $role = new Role($db);
     $id = $_POST['id'];
@@ -24,5 +27,7 @@ function actionModifRole($twig, $db){
         header("Location: index.php?page=roles");
     }
     $unRole = $role->selectByID($id);
-    echo $twig->render("roles-modif.html.twig", array('role'=>$unRole));
+    $type = new Type($db);
+    $types = $type->select();
+    echo $twig->render("roles-modif.html.twig", array('role'=>$unRole, 'types'=>$types));
 }

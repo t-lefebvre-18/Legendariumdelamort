@@ -9,20 +9,22 @@
             $id = $_POST['id'];
             $exec = $cc->delete($id);
         }
-        
+
         $tabMaxIndex = $cc->maxIndex();
         $form['maxIndex'] = $tabMaxIndex[0];
         $liste = $cc->select();
-        echo $twig->render('gestionCoupCoeur.html.twig', array('form'=>$form, 'liste'=>$liste));
+        $type = new Type($db);
+        $types = $type->select();
+        echo $twig->render('gestionCoupCoeur.html.twig', array('form'=>$form, 'liste'=>$liste, 'types'=>$types));
     }
-   
+
 
     function actionModifCoupCoeur($twig,$db)
     {
         $form = array();
         $cc = new CoupCoeur($db);
         $livre = new Livre($db);
-        
+
         if(isset($_GET['id']))
             $form['id'] = $_GET['id'];
         else
@@ -36,5 +38,7 @@
         }
 
         $liste = $livre->select();
-        echo $twig->render('modifCoupCoeur.html.twig', array('liste'=>$liste, 'form'=>$form));
+        $type = new Type($db);
+        $types = $type->select();
+        echo $twig->render('modifCoupCoeur.html.twig', array('liste'=>$liste, 'form'=>$form, 'types'=>$types));
     }

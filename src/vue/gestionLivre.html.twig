@@ -1,7 +1,7 @@
 {% extends "base.html.twig" %}
 {% block title %} {{ parent() }} Administration {% endblock %}
 
-{% block contenu %} 
+{% block contenu %}
 
     <h1>Administration - Gestion des livres </h1>
     <div class="panel panel-primary">
@@ -24,15 +24,15 @@
                 <input type="number" step="1" id="inputAnnee" placeholder="Année"  class="form-control" name="inputAnnee" value="1900" required />
                 <select name="inputType" class="form-control" required>
                     <option value="">Genre</option>
-                    {% for t in type %}
+                    {% for t in types %}
                     <option value="{{t.IdType}}">{{t.LibelleType}}</option>
                     {% endfor %}
                 </select>
                 <textarea name="inputResume" class="form-control" placeholder="Résumé" rows="5" required></textarea>
-                
+
                 <input type="hidden" name="max_file_size" value="5000000">
                 Illustration :<input type="file" name="photo" id="photo" class="form-control"/>
-                
+
                 <input type="text" id="inputISBN" name="inputISBN" class="form-control" placeholder="ISBN" minlength="16" maxlength="18" size="18" required autofocus/>
                 <select name="inputDispo" class="form-control" required>
                     <option value="">Disponibilité</option>
@@ -44,10 +44,10 @@
                 <input type="number" step="1" id="inputNbrExemplaire" placeholder="Nombre d'exemplaire"  class="form-control" name="inputNbrExemplaire" required />
                 <button class="btn btn-lg btn-primary btn-block" type="submit" name="btAjoutLivre">Ajouter un Livre</button>
             </form>
-        </div>    
+        </div>
     </div>
-    
-    
+
+
     <div class="panel panel-default">
         <!-- Table -->
         <div class="table-responsive">
@@ -92,12 +92,12 @@
                                     <button name="btSupProd"><span class='glyphicon glyphicon-trash' aria-hidden='true'></span></button>
                                 </form>
                             </div></td>
-                    </tr> 
+                    </tr>
                 {% endfor %}
             </table>
         </div>
     </div>
 </div>
-</div>      
+</div>
 
-{% endblock %} 
+{% endblock %}

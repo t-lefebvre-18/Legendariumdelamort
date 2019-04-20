@@ -29,7 +29,7 @@
                     <input type="number" step="1" id="inputAnnee" value="{{l.AnneeLivre}}"  class="form-control" name="inputAnnee" value="1900" required />
                     <select name="inputType" class="form-control" required>
                         <option value="{{l.TypeLivre}}">{{l.LibelleType}}</option>
-                        {% for t in type %}
+                        {% for t in types %}
                             {% if l.TypeLivre!=t.IdType %}
                                 <option value="{{t.IdType}}">{{t.LibelleType}}</option>
                             {% endif %}
@@ -52,6 +52,6 @@
                 </form>
             {% endfor %}
 
-        </div>    
+        </div>
     </div>
-{% endblock %} 
+{% endblock %}

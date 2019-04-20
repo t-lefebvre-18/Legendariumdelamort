@@ -1,9 +1,10 @@
 <?php
 
-function actionProduit($twig, $db){
+function actionProduit($twig, $db)
+{
     $form = array();
     $prod = new Produit($db);
-    
+
     if(isset($_POST['btAjoutProd'])){
         $designation = $_POST['inputDesignation'];
         $description = $_POST['description'];
@@ -24,10 +25,12 @@ function actionProduit($twig, $db){
     }
     $liste = $prod->select();
     $types = $prod->listeTypes();
-    
+
     echo $twig->render('gestionProduits.html.twig', array('form'=>$form,'liste'=>$liste, 'types'=>$types));
 }
-function actionModifProduit($twig, $db){
+
+function actionModifProduit($twig, $db)
+{
     $prod = new Produit($db);
     $id = $_POST['id'];
     if(isset($_POST['btModifProduit'])){
@@ -38,7 +41,7 @@ function actionModifProduit($twig, $db){
         $update= $prod->update($id, $designation, $description, $prix, $idType);
        header("Location: index.php?page=gestionProduits");
     }
-        
+
         $liste = $prod->selectByID($id);
         $types = $prod->listeTypes();
         echo $twig->render('modifProduits.html.twig', array('liste'=>$liste, 'types'=>$types));

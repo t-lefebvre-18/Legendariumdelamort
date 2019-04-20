@@ -38,7 +38,9 @@ function actionInscription($twig, $db)
         $form['email'] = $inputEmail;
         $form['role'] = $role;
     }
-    echo $twig->render('inscription.html.twig', array('form' => $form));
+    $type = new Type($db);
+    $types = $type->select();
+    echo $twig->render('inscription.html.twig', array('form' => $form, 'types'=>$types));
 }
 
 function actionConnexion($twig, $db)
@@ -72,11 +74,13 @@ function actionConnexion($twig, $db)
             $form['message'] = 'Login ou mot de passe incorrect';
         }
     }
-    echo $twig->render('connexion.html.twig', array('form' => $form));
+    $type = new Type($db);
+    $types = $type->select();
+    echo $twig->render('connexion.html.twig', array('form' => $form, 'types'=>$types));
 }
 
 function actionApropos($twig){
-    echo $twig->render('apropos.html.twig', array());
+    echo $twig->render('apropos.html.twig', array('types'=>$types));
 }
 
 function actionMentions($twig){
@@ -91,14 +95,6 @@ function actionDeconnexion($twig){
 
 function actionMaintenance($twig){
     echo $twig->render('maintenance.html.twig', array());
-}
-
-function actionGestion_utilisateurs($twig){
-    echo $twig->render('gestion_utilisateurs.html.twig', array());
-}
-
-function actionGestion_types($twig){
-    echo $twig->render('gestion_types.html.twig', array());
 }
 
 function actionLibrairie($twig, $db)
@@ -162,6 +158,7 @@ function actionLibrairie($twig, $db)
     }
     else
         $listeLivre = $livre->select();
-
-    echo $twig->render('librairie.html.twig', array('form'=>$form,'liste'=>$listeLivre));
+    $type = new Type($db);
+    $types = $type->select();
+    echo $twig->render('librairie.html.twig', array('form'=>$form,'liste'=>$listeLivre, 'types'=>$types));
 }

@@ -7,7 +7,9 @@
             $utilisateur->delete($email);
         }
         $liste = $utilisateur->select();
-        echo $twig->render('utilisateur.html.twig', array('liste'=>$liste));
+        $type = new Type($db);
+        $types = $type->select();
+        echo $twig->render('utilisateur.html.twig', array('liste'=>$liste, 'types'=>$types));
     }
     function actionModifUtilisateur($twig, $db)
     {
@@ -36,5 +38,7 @@
             header("Location: index.php?page=utilisateur");
         }
         $util = $utilisateur->afficher($_POST['email']);
-        echo $twig->render('utilisateur-modif.html.twig', array('liste'=>$util, 'roles'=>$roles, 'form'=>$form));
+        $type = new Type($db);
+        $types = $type->select();
+        echo $twig->render('utilisateur-modif.html.twig', array('liste'=>$util, 'roles'=>$roles, 'form'=>$form, 'types'=>$types));
     }

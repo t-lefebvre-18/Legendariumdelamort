@@ -15,15 +15,16 @@
             $exec = $editeur->insert($libelle);
         }
         $liste = $editeur->select();
-        
-        echo $twig->render('gestionEditeur.html.twig', array('form'=>$form, 'liste'=>$liste));
+        $type = new Type($db);
+        $types = $type->select();
+        echo $twig->render('gestionEditeur.html.twig', array('form'=>$form, 'liste'=>$liste, 'types'=>$types));
     }
-    
+
     function actionModifEditeur($twig,$db)
     {
         $form = array();
         $editeur = new Editeur($db);
-        $id = $_POST['id']; 
+        $id = $_POST['id'];
         $unEditeur = $editeur->selectByID($id);
         if(isset($_POST['btModifE']))
         {
@@ -31,5 +32,7 @@
             $editeur->update($id, $libelle);
             header("Location: index.php?page=gestionEditeur");
         }
-        echo $twig->render('modifEditeur.html.twig', array('editeur'=>$unEditeur));
+        $type = new Type($db);
+        $types = $type->select();
+        echo $twig->render('modifEditeur.html.twig', array('editeur'=>$unEditeur, 'types'=>$types));
     }

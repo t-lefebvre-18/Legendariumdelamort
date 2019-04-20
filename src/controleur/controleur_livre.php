@@ -57,7 +57,7 @@ function actionLivre($twig, $db)
     $auteurs = $livre->listeAuteur();
     $editeurs = $livre->listeEditeur();
     $dispos = $livre->listeDispo();
-    echo $twig->render('gestionLivre.html.twig', array('form'=>$form,'liste'=>$liste, 'type'=>$types, 'auteur'=>$auteurs, 'editeur'=>$editeurs, 'dispo'=>$dispos));
+    echo $twig->render('gestionLivre.html.twig', array('form'=>$form,'liste'=>$liste, 'types'=>$types, 'auteur'=>$auteurs, 'editeur'=>$editeurs, 'dispo'=>$dispos));
 }
 
 function actionModifLivre($twig, $db){
@@ -85,7 +85,7 @@ function actionModifLivre($twig, $db){
         $auteurs = $livre->listeAuteur();
         $editeurs = $livre->listeEditeur();
         $dispos = $livre->listeDispo();
-        echo $twig->render('modifLivre.html.twig', array('liste'=>$liste, 'type'=>$types, 'auteur'=>$auteurs, 'editeur'=>$editeurs, 'dispo'=>$dispos));
+        echo $twig->render('modifLivre.html.twig', array('liste'=>$liste, 'types'=>$types, 'auteur'=>$auteurs, 'editeur'=>$editeurs, 'dispo'=>$dispos));
 }
 
 function actionPresLivre($twig, $db)
@@ -259,5 +259,7 @@ function actionPresLivre($twig, $db)
         $listea = NULL;
         $listeg = NULL;
     }
-    echo $twig->render('presLivre.html.twig', array('form'=>$form, 'liste'=>$liste, 'listea'=>$listea, 'listeg'=>$listeg));
+    $type = new Type($db);
+    $types = $type->select();
+    echo $twig->render('presLivre.html.twig', array('form'=>$form, 'liste'=>$liste, 'listea'=>$listea, 'listeg'=>$listeg, 'types'=>$types));
 }
