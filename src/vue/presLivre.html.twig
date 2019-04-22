@@ -39,24 +39,26 @@
                     <p style="color:{{l.CouleurDisponibilite}};">{{l.LibelleDisponibilite}}</p></br>
 
 
-                    <button id="cb" onclick="saisir();" name="btReserver" class="jaime">Réserver <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"/></button></br></br>
+                    {% if l.DispoLivre == 1 %}
+                        <button id="cb" onclick="saisir();" name="btReserver" class="jaime">Réserver <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"/></button></br></br>
+                    {% elseif l.DispoLivre == 2 %}
+                        <button id="cb" onclick="saisir();" name="btReserver" class="jaime">Pré-réserver <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"/></button></br></br>
+                    {% endif %}
                     <div id="coucou">
-                        <form action="index.php?page=livre&id={{l.IdLivre}}" method="post">
-                            <h4> Pseudonyme sous lequel vous allez retirer votre livre : </h4>
-                            <input type="text" placeholder="Pseudo" name="inputPseudo"/>
-                            <input type="hidden" name="idLivre" value="{{l.IdLivre}}">
-                            <button class="jaime" name="btReserver"><span class="glyphicon glyphicon-ok"/></button>
-                        </form>
-                    </div></br></br>
-
+                            <form action="index.php?page=livre&id={{l.IdLivre}}" method="post">
+                                <h4> Pseudonyme sous lequel vous allez retirer votre livre : </h4>
+                                <input type="text" placeholder="Pseudo" name="inputPseudo"/>
+                                <input type="hidden" name="idLivre" value="{{l.IdLivre}}">
+                                <button class="jaime" name="btReserver"><span class="glyphicon glyphicon-ok"/></button>
+                            </form>
+                        </div></br></br>
                     <div class="resume">
-                        {{l.ResumeLivre}}
+                        {{l.ResumeLivre|nl2br}}
                     </div>
                 </center>
             </div>
     <script>
-
-    document.getElementById('coucou').style.display = 'none';
+        document.getElementById('coucou').style.display = 'none';
         function saisir()
         {
             if (document.getElementById('coucou').style.display == 'none')
@@ -67,8 +69,6 @@
             {
                  document.getElementById('coucou').style.display = 'none';
             }
-
-
         }
     </script>
 

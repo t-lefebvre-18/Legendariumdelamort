@@ -5,7 +5,7 @@
   "uploadOnSave": true,
   "useAtomicWrites": false,
   "deleteLocal": false,
-  "hostname": "192.168.0.21",
+  "hostname": "192.168.0.12",
   "port": "22",
   "target": "/var/www/html/vente/",
   "ignore": [

@@ -2,6 +2,7 @@
     function actionEvent($twig, $db)
     {
         $form = array();
+        $datePass = array();
         $event = new Event($db);
         if(isset($_POST['btSupE']))
         {
@@ -44,9 +45,20 @@
             }
         }
         $liste = $event->select();
+        $y = 0;
+        foreach($liste as $date)
+        {
+            $dateEvent = strtotime($date['DateEvent']);
+            $dateAjd = strtotime(date('Y-m-d'));
+            if(($dateAjd-$dateEvent)/86400 > 0)
+            {
+                $datePass[$y] = $date['IdEvent'];
+                $y++;
+            }
+        }
         $type = new Type($db);
         $types = $type->select();
-        echo $twig->render('gestionEvent.html.twig', array('form'=>$form, 'liste'=>$liste, 'types'=>$types));
+        echo $twig->render('gestionEvent.html.twig', array('form'=>$form, 'liste'=>$liste, 'types'=>$types, 'listePass'=>$datePass));
     }
 
 

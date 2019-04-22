@@ -1,7 +1,7 @@
 {% extends "base.html.twig" %}
 {% block title %} {{ parent() }} Administration {% endblock %}
 
-{% block contenu %} 
+{% block contenu %}
 
     <h1>Administration - Gestion des évenements </h1>
 
@@ -16,10 +16,10 @@
                 Illustration :<input type="file" name="IllEvent" id="photo" class="form-control"/>
                 <button class="btn btn-lg btn-primary btn-block" type="submit" name="btAjoutE">Ajouter un Event</button>
             </form>
-        </div>    
+        </div>
     </div>
-    
-    
+
+
     <div class="panel panel-default">
         <!-- Table -->
         <div class="table-responsive">
@@ -33,7 +33,17 @@
                     <th></th>
                 </tr>
                 {% for e in liste %}
-                    <tr>
+                    {% set test = 0 %}
+                    {% for dp in listePass %}
+                        {% if dp == e.IdEvent %}
+                            {% set test = 1 %}
+                        {% endif %}
+                    {% endfor %}
+                    {% if test == 1 %}
+                        <tr style="color: red;">
+                    {% else %}
+                        <tr>
+                    {% endif %}
                         <td><img src="{{e.IllustrationEvent}}" width="150"/></td>
                         <td>{{e.TitreEvent}}</td>
                         <td>{{e.DescriptionEvent}}</td>
@@ -52,11 +62,11 @@
                                     <button name="btSupE"><span class='glyphicon glyphicon-trash' aria-hidden='true'></span></button>
                                 </form>
                             </div></td>
-                    </tr> 
+                    </tr>
                 {% endfor %}
             </table>
         </div>
     </div>
-</div>      
+</div>
 
 {% endblock %}

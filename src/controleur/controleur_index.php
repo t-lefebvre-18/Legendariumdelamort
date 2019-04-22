@@ -184,6 +184,8 @@ function actionLibrairie($twig, $db)
                 $trier = "PrixLivre";
             elseif($trier == 4)
                 $trier = "PrixLivre desc";
+            elseif($trier == 5)
+                $trier = "DispoLivre";
             else
                 $trier = "TitreLivre";
             //$listeLivre = $livre->selectIT($id, $trier);
@@ -201,11 +203,13 @@ function actionLibrairie($twig, $db)
             if($trier == 1)
                 $trier = "SortieLivre";
             elseif($trier == 2)
-                $trier = "JaimeLivre";
+                $trier = "JaimeLivre desc";
             elseif($trier == 3)
                 $trier = "PrixLivre";
             elseif($trier == 4)
                 $trier = "PrixLivre desc";
+            elseif($trier == 5)
+                $trier = "DispoLivre";
             else
                 $trier = "TitreLivre";
             $listeLivre = $db->query("select * from Livre "

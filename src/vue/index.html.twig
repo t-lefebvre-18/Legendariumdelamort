@@ -19,7 +19,7 @@
     {% for d in DN %}
         <center class="mySlides1 w3-animate-opacity">
             <img src="{{d.IllustrationLivre}}" width="270" height="370"></br>
-            <a class="slide-remi" href="#"> {{d.TitreLivre}} - ({{d.NomAuteur}})</a></br>
+            <a class="slide-remi" href="index.php?page=livre&id={{d.IdLivre}}"> {{d.TitreLivre}} - ({{d.NomAuteur}})</a></br>
         </center>
     {% endfor %}
     <center>
@@ -34,7 +34,7 @@
     {% for c in CC %}
         <center class="mySlides2 w3-animate-opacity">
             <img src="{{c.IllustrationLivre}}" width="270" height="370"></br>
-            <a class="slide-remi" href="#"> {{c.TitreLivre}} - ({{c.NomAuteur}})</a></br>
+            <a class="slide-remi" href="index.php?page=livre&id={{c.IdLivre}}"> {{c.TitreLivre}} - ({{c.NomAuteur}})</a></br>
         </center>
     {% endfor %}
     <center>
@@ -44,13 +44,20 @@
 </section>
 
 <div class="slideshow3-remi">
-    <center><h2> Les évevenment de votre Librairie </h2></center>
-    {% for e in event %}
+    <center><h2> Les évevenements de votre Librairie </h2></center>
+    {% if event is empty %}
         <center class="mySlides3 w3-animate-opacity">
-            <img src="{{e.IllustrationEvent}}" width="720" height="480"></br>
-            <a class="slide-remi" href="#"> {{e.TitreEvent}} - ({{e.DateEvent}})</a></br>
+            <img src="../web/images/legendarium2.png" width="720" height="480"></br>
+            <a class="slide-remi" href="#"> Aucun évenement de prévu </a></br>
         </center>
-    {% endfor %}s
+    {% else %}
+        {% for e in event %}
+            <center class="mySlides3 w3-animate-opacity">
+                <img src="{{e.IllustrationEvent}}" width="720" height="480"></br>
+                <a class="slide-remi" href="#"> {{e.TitreEvent}} - ({{e.DateEvent}})</a></br>
+            </center>
+        {% endfor %}
+    {% endif %}
 </div>
 <center>
     <button class="button" onclick="plusSlides(-1, 2);">&#10094;</button>

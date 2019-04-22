@@ -121,7 +121,7 @@ function actionPresLivre($twig, $db)
             {
                 $id = $_POST['idLivre'];
                 $pseudo = $_POST['inputPseudo'];
-                $exec = $livre->reservation($id, $pseudo);
+                $exec = $livre->reservation($id, $pseudo, date('Y-m-d'));
                 if(!$exec)
                 {
                     $form['valide'] = false;
