@@ -6,7 +6,7 @@
         } catch (Exception $e) {
             $db = NULL;
         }
-        return $db;//voilaaaaa
+        return $db;
     }
 ?>
 
