@@ -13,9 +13,7 @@
         $tabMaxIndex = $cc->maxIndex();
         $form['maxIndex'] = $tabMaxIndex[0];
         $liste = $cc->select();
-        $type = new Type($db);
-        $types = $type->select();
-        echo $twig->render('gestionCoupCoeur.html.twig', array('form'=>$form, 'liste'=>$liste, 'types'=>$types));
+        echo $twig->render('gestionCoupCoeur.html.twig', array('form'=>$form, 'liste'=>$liste));
     }
 
 
@@ -38,7 +36,5 @@
         }
 
         $liste = $livre->select();
-        $type = new Type($db);
-        $types = $type->select();
-        echo $twig->render('modifCoupCoeur.html.twig', array('liste'=>$liste, 'form'=>$form, 'types'=>$types));
+        echo $twig->render('modifCoupCoeur.html.twig', array('liste'=>$liste, 'form'=>$form));
     }

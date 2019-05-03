@@ -265,7 +265,5 @@ function actionPresLivre($twig, $db)
         $listea = NULL;
         $listeg = NULL;
     }
-    $type = new Type($db);
-    $types = $type->select();
-    echo $twig->render('presLivre.html.twig', array('form'=>$form, 'liste'=>$liste, 'listea'=>$listea, 'listeg'=>$listeg, 'types'=>$types));
+    echo $twig->render('presLivre.html.twig', array('form'=>$form, 'liste'=>$liste, 'listea'=>$listea, 'listeg'=>$listeg));
 }

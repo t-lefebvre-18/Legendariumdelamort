@@ -12,8 +12,6 @@ class Event{
         $this->select = $db->prepare("select * from Event order by IdEvent");
         $this->insert = $db->prepare("insert into Event(TitreEvent, DescriptionEvent, DateEvent, IllustrationEvent) values(:titre, :description, :date, :illustration)");
         $this->update = $db->prepare("update Event set TitreEvent=:titre, DescriptionEvent=:description, DateEvent=:date where IdEvent=:id");
-
-        
         $this->selectByID = $db->prepare("select * from Event where IdEvent = :id");        
 
         $this->delete = $db->prepare("delete from Event where IdEvent = :id ");

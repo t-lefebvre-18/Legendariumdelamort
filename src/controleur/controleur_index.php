@@ -6,13 +6,12 @@ function actionAccueil($twig, $db)
     $cc = new CoupCoeur($db);
     $event = new Event($db);
     $livre = new Livre($db);
-    $types = $type->select();
     $listeCC = $cc->select();
     $listeEvent = $event->select();
     $listeDNprov = $livre->selectDN();
     for($i = 0; $i<3; $i++)
         $listeDN[$i]=$listeDNprov[$i];
-    echo $twig->render('index.html.twig', array('form'=>$form,'types'=>$types, 'CC'=>$listeCC, 'event'=>$listeEvent, "DN"=>$listeDN));
+    echo $twig->render('index.html.twig', array('form'=>$form, 'CC'=>$listeCC, 'event'=>$listeEvent, "DN"=>$listeDN));
 }
 
 function actionInscription($twig, $db)
@@ -42,9 +41,7 @@ function actionInscription($twig, $db)
         $form['email'] = $inputEmail;
         $form['role'] = $role;
     }
-    $type = new Type($db);
-    $types = $type->select();
-    echo $twig->render('inscription.html.twig', array('form' => $form, 'types'=>$types));
+    echo $twig->render('inscription.html.twig', array('form' => $form));
 }
 
 function actionConnexion($twig, $db)
@@ -78,13 +75,12 @@ function actionConnexion($twig, $db)
             $form['message'] = 'Login ou mot de passe incorrect';
         }
     }
-    $type = new Type($db);
-    $types = $type->select();
-    echo $twig->render('connexion.html.twig', array('form' => $form, 'types'=>$types));
+    echo $twig->render('connexion.html.twig', array('form' => $form));
 }
 
-function actionApropos($twig){
-    echo $twig->render('apropos.html.twig', array('types'=>$types));
+function actionApropos($twig)
+{
+    echo $twig->render('apropos.html.twig');
 }
 
 function actionMentions($twig){
@@ -222,7 +218,6 @@ function actionLibrairie($twig, $db)
         else
             $listeLivre = $livre->select();
     }
-    $type = new Type($db);
-    $types = $type->select();
-    echo $twig->render('librairie.html.twig', array('form'=>$form,'liste'=>$listeLivre, 'types'=>$types));
+
+    echo $twig->render('librairie.html.twig', array('form'=>$form,'liste'=>$listeLivre));
 }

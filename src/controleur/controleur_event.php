@@ -56,9 +56,7 @@
                 $y++;
             }
         }
-        $type = new Type($db);
-        $types = $type->select();
-        echo $twig->render('gestionEvent.html.twig', array('form'=>$form, 'liste'=>$liste, 'types'=>$types, 'listePass'=>$datePass));
+        echo $twig->render('gestionEvent.html.twig', array('form'=>$form, 'liste'=>$liste, 'listePass'=>$datePass));
     }
 
 
@@ -77,7 +75,22 @@
             $event->update($id, $titre, $description, $date);
             header("Location: index.php?page=gestionEvent");
         }
-        $type = new Type($db);
-        $types = $type->select();
-        echo $twig->render('modifEvent.html.twig', array('event'=>$unEvent, 'types'=>$types));
+        echo $twig->render('modifEvent.html.twig', array('event'=>$unEvent));
+    }
+    
+    function actionPresEvent($twig, $db)
+    {
+        $form = array();
+        $event = new Event($db);
+        if(isset($_GET['idEvent']))
+        {
+            $id = $_GET['idEvent'];
+            $liste = $event->selectByID($id);
+        }
+        else
+        {
+            $form['valide'] = false;
+            $form['message'] = "Identifiant de l'évènement non renseigné";
+        }
+        echo $twig->render('presEvent.html.twig', array('form'=>$form, 'liste'=>$liste));
     }

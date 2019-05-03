@@ -18,9 +18,7 @@
             $exec = $auteur->insert($nom, $prenom, $datenaiss, $pays);
         }
         $liste = $auteur->select();
-        $type = new Type($db);
-        $types = $type->select();
-        echo $twig->render('gestionAuteur.html.twig', array('form'=>$form, 'liste'=>$liste, 'types'=>$types));
+        echo $twig->render('gestionAuteur.html.twig', array('form'=>$form, 'liste'=>$liste));
     }
 
 
@@ -41,7 +39,5 @@
            header("Location: index.php?page=gestionAuteur");
 
         }
-        $type = new Type($db);
-        $types = $type->select();
-        echo $twig->render('modifAuteur.html.twig', array('auteur'=>$unAuteur, 'types'=>$types));
+        echo $twig->render('modifAuteur.html.twig', array('auteur'=>$unAuteur));
     }

@@ -5,6 +5,7 @@ function actionReservation($twig, $db)
     $form = array();
     $datePass = array();
     $reserv = new Reservation($db);
+    $miseZero = $reserv->miseZero();
     if(isset($_POST['btSupReserv']))
     {
         $id = $_POST['idReserv'];
@@ -22,7 +23,5 @@ function actionReservation($twig, $db)
             $y++;
         }
     }
-    $type = new Type($db);
-    $types = $type->select();
-    echo $twig->render('gestionReservation.html.twig', array('form'=>$form, 'liste'=>$liste, 'types'=>$types, 'listePass'=>$datePass));
+    echo $twig->render('gestionReservation.html.twig', array('form'=>$form, 'liste'=>$liste, 'listePass'=>$datePass));
 }

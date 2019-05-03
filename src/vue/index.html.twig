@@ -54,7 +54,7 @@
         {% for e in event %}
             <center class="mySlides3 w3-animate-opacity">
                 <img src="{{e.IllustrationEvent}}" width="720" height="480"></br>
-                <a class="slide-remi" href="#"> {{e.TitreEvent}} - ({{e.DateEvent}})</a></br>
+                <a class="slide-remi" href="index.php?page=presEvent&idEvent={{e.IdEvent}}"> {{e.TitreEvent}} - ({{e.DateEvent}})</a></br>
             </center>
         {% endfor %}
     {% endif %}

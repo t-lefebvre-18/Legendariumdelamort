@@ -41,8 +41,6 @@
 
                     {% if l.DispoLivre == 1 %}
                         <button id="cb" onclick="saisir();" name="btReserver" class="jaime">Réserver <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"/></button></br></br>
-                    {% elseif l.DispoLivre == 2 %}
-                        <button id="cb" onclick="saisir();" name="btReserver" class="jaime">Pré-réserver <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"/></button></br></br>
                     {% endif %}
                     <div id="coucou">
                             <form action="index.php?page=livre&id={{l.IdLivre}}" method="post">

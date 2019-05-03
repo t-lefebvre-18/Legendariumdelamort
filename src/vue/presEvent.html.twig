@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+{% block title %} {{ parent() }} Administration {% endblock %}
+
+{% block contenu %}
+    {% if form.valide is defined %}
+        {% if form.valide == false  %}
+            <h1> Erreur : {{form.message}} </h1>
+        {% endif %}
+    {% else %}
+                <h1> {{liste.TitreEvent}} </h1>
+                <div class="panel panel-default">
+                    <center>
+                        <img src="{{liste.IllustrationEvent}}" width="250"/></br>
+                        Date de l'évenement : {{liste.DateEvent}}
+                        Description de l'évenement : </br>
+                        <div class="resume">
+                            {{liste.DescriptionEvent|nl2br}}
+                        </div>
+                    </center>
+                </div>
+        {% endif %}
+{% endblock %}

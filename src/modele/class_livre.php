@@ -68,7 +68,7 @@ class Livre {
                                    . "ISBNLivre = :isbn, ResumeLivre = :resume, DispoLivre = :dispo, PrixLivre = :prix, NbrExemplaireLivre = :nbrexemplaire "
                                    . "where Idlivre = :id");
         $this->search = $db->prepare("select * from Livre where TitreLivre like ':search%'");
-        $this->reservation = $db->prepare("insert into Reservation(LivreReservation, UtilisateurReservation, DateReservation) values(:id, :pseudo, :date)");
+        $this->reservation = $db->prepare("insert into Reservation(LivreReservation, UtilisateurReservation, DateReservation, NotifReservation) values(:id, :pseudo, :date, 1)");
         $this->idReservation = $db->prepare("select max(IdReservation) from Reservation");
         $this->selectIP = $db->prepare("select * from EnregistrementIP where AdresseIP=:adresse and LivreIP=:idLivre");
         $this->deleteIP = $db->prepare("delete from EnregistrementIP where AdresseIP=:adresse and LivreIP=:idLivre");
