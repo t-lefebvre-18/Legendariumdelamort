@@ -5,15 +5,15 @@
   "uploadOnSave": true,
   "useAtomicWrites": false,
   "deleteLocal": false,
-  "hostname": "192.168.0.12",
-  "port": "22",
-  "target": "/var/www/html/vente/",
+  "hostname": "si6.arras-sio.com",
+  "port": "21",
+  "target": "/",
   "ignore": [
     ".remote-sync.json",
     ".git/**"
   ],
-  "username": "eleve",
+  "username": "rjousse",
   "watch": [],
-  "transport": "scp",
-  "password": "btsinfo"
+  "transport": "ftp",
+  "password": "lojbxuzp"
 }
