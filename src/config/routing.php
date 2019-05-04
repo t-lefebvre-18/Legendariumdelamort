@@ -32,6 +32,8 @@ $lesPages['librairie'] = 'actionLibrairie;0';
 $lesPages['livre'] = 'actionPresLivre;0';
 $lesPages['gestionReservation'] = 'actionReservation;1';
 $lesPages['presEvent'] = 'actionPresEvent;0';
+$lesPages['creaJDR'] = 'actionJDR;0';
+$lesPages['choixJeu'] = 'actionChoixJeu;0';
 
 if ($db != null)
 {

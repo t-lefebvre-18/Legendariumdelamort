@@ -27,66 +27,60 @@ data-target="#navbar" aria-expanded="false" aria-controls="navbar">
  </button>
  </div>
 
+     <div id="navbar" class="collapse navbar-collapse">
          <ul class="nav navbar-nav">
-        <li>
-            <form  class="navbar-form navbar-right" action="index.php?page=modifRole" method="post" enctype="application/x-www-form-urlencoded">
-                <input class="form-control mr-sm-2" type="search" placeholder="Rechercher" arialabel="Rechercher">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">OK</button>
-            </form>
-        </li>
-        <li>
-            <a class="dropdown-toggle" href="" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Catégories</a>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="index.php?page=dernieresSorties">Dernières sorties</a></li>
-                <li><a class="dropdown-item" href="index.php?page=lesPlusAimes">Les plus aimés</a></li>
-                <li><a class="dropdown-item" href="index.php?page=librairie">Toute la librairie</a></li>
-                {% for t in types %}
-                    <li><a class="dropdown-item" href="index.php?page=librairie&id={{ t.IdType }}">{{t.LibelleType}}</a></li>
-                {% endfor %}
-            </ul>
-
-        </li></br>
-    </ul>
-
-
- <div id="navbar" class="collapse navbar-collapse">
- <ul class="nav navbar-nav">
- <li class="active"><a href="index.php">Accueil</a></li>
-    {% if session.login is defined %}
-    {% if session.role == 1 %}
-    <li class="dropdown">
-        <a class="dropdown-toggle" href="" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administration</a>
-        <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="index.php?page=gestionLivre">Livre</a></li>
-            <li><a class="dropdown-item" href="index.php?page=gestionType">Type</a></li>
-            <li><a class="dropdown-item" href="index.php?page=gestionEditeur">Editeur</a></li>
-            <li><a class="dropdown-item" href="index.php?page=gestionAuteur">Auteur</a></li>
-            <li><a class="dropdown-item" href="index.php?page=gestionJeu">Jeu</a></li>
-            <li><a class="dropdown-item" href="index.php?page=gestionCoupCoeur">Coup de Coeur</a></li>
-            <li><a class="dropdown-item" href="index.php?page=gestionEvent">Event</a></li>
-            {% if notifReserv != 0 %}
-                <li><a class="dropdown-item reserv" href="index.php?page=gestionReservation">Reservation - {{notifReserv}}</a></li>
-            {% else %}
-                <li><a class="dropdown-item" href="index.php?page=gestionReservation">Reservation</a></li>
-            {% endif %}
-            <li><a class="dropdown-item" href="index.php?page=utilisateur">Utilisateur</a></li>
-            <li><a class="dropdown-item" href="index.php?page=roles">Rôles</a></li>
-        </ul>
-    </li>
-    {% endif %}
-    {% endif %}
- <li><a href="index.php?page=apropos">À propos</a></li>
- <li><a href="index.php?page=mentions">Mentions légales</a></li>
- {% if session.login is defined %}
- <li><a href="index.php?page=deconnexion">Se déconnecter</a></li>
- {% else %}
- <li><a href="index.php?page=connexion">Se connecter</a></li>
- {% endif %}
- {% if session.login is defined %}
- <li><a href="#">{{session.login}}</a></li>
- {% endif %}
- </ul>
- </div><!--/.nav-collapse -->
+             <li class="active"><a href="index.php"><span class="glyphicon glyphicon-home" aria-hidden="true"/> Accueil</a></li>
+             <li>
+                 <a class="dropdown-toggle" href="" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-book" aria-hidden="true"/> Catégories</a>
+                 <ul class="dropdown-menu">
+                     <li><a class="dropdown-item" href="index.php?page=dernieresSorties">Dernières sorties</a></li>
+                     <li><a class="dropdown-item" href="index.php?page=lesPlusAimes">Les plus aimés</a></li>
+                     <li><a class="dropdown-item" href="index.php?page=librairie">Toute la librairie</a></li>
+                     {% for t in types %}
+                         <li><a class="dropdown-item" href="index.php?page=librairie&id={{ t.IdType }}">{{t.LibelleType}}</a></li>
+                     {% endfor %}
+                 </ul>
+             </li>
+                {% if session.login is defined %}
+                {% if session.role == 1 %}
+                <li class="dropdown">
+                    {% if notif > 0 %}
+                        <a class="dropdown-toggle" href="" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-lock" aria-hidden="true"/> Administration - {{notif + notifReserv}}</a>
+                    {% else %}
+                        <a class="dropdown-toggle" href="" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-lock" aria-hidden="true"/> Administration</a>
+                    {% endif %}
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="index.php?page=gestionLivre">Livre</a></li>
+                        <li><a class="dropdown-item" href="index.php?page=gestionType">Type</a></li>
+                        <li><a class="dropdown-item" href="index.php?page=gestionEditeur">Editeur</a></li>
+                        <li><a class="dropdown-item" href="index.php?page=gestionAuteur">Auteur</a></li>
+                        <li><a class="dropdown-item" href="index.php?page=gestionJeu">Jeu</a></li>
+                        <li><a class="dropdown-item" href="index.php?page=gestionCoupCoeur">Coup de Coeur</a></li>
+                        <li><a class="dropdown-item" href="index.php?page=gestionEvent">Event</a></li>
+                        {% if notifReserv != 0 %}
+                            <li><a class="dropdown-item reserv" href="index.php?page=gestionReservation">Reservation - {{notifReserv}}</a></li>
+                        {% else %}
+                            <li><a class="dropdown-item" href="index.php?page=gestionReservation">Reservation</a></li>
+                        {% endif %}
+                        <li><a class="dropdown-item" href="index.php?page=utilisateur">Utilisateur</a></li>
+                        <li><a class="dropdown-item" href="index.php?page=roles">Rôles</a></li>
+                    </ul>
+                </li>
+                {% endif %}
+                {% endif %}
+             <li><a href="index.php?page=choixJeu"><span class="glyphicon glyphicon-knight" aria-hidden="true"/> Création JDR</a></a></li>
+             <li><a href="index.php?page=apropos">À propos</a></li>
+             <li><a href="index.php?page=mentions">Mentions légales</a></li>
+             {% if session.login is defined %}
+             <li><a href="index.php?page=deconnexion">Se déconnecter</a></li>
+             {% else %}
+             <li><a href="index.php?page=connexion">Se connecter</a></li>
+             {% endif %}
+             {% if session.login is defined %}
+             <li><a href="#">{{session.login}}</a></li>
+             {% endif %}
+         </ul>
+     </div><!--/.nav-collapse -->
  </div>
  </nav>
 

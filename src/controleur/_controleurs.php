@@ -11,4 +11,5 @@
   require_once 'controleur_produit.php';
   require_once 'controleur_roles.php';
   require_once 'controleur_reservation.php';
+  require_once 'controleur_JDR.php';
 ?>
