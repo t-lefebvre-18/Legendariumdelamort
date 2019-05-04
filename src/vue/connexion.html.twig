@@ -1,19 +1,19 @@
 {% extends "base.html.twig" %}
 {% block style %}<link href="css/style-signin.css" rel="stylesheet"> {% endblock %}
 {% block title %} {{ parent() }} Se connecter {% endblock %}
-{% block contenu %} 
-    {% if form.valide is defined %} 
+{% block contenu %}
+    {% if form.valide is defined %}
         {% if form.valide == true %}
             <h1 class="h3 mb-3 font-weight-normal">Connexion réussie</h1>
             <h1 class="h3 mb-3 font-weight-normal">Vous êtes connectés avec l'e-mail suivant : {{form.email}}</h1>
             <h1 class="h3 mb-3 font-weight-normal"><a href="index.php">Retourner sur la page d'accueil</h1>
         {% else %}
-            <h1 class="h3 mb-3 font-weight-normal">Echec de la connexion</h1> 
+            <h1 class="h3 mb-3 font-weight-normal">Echec de la connexion</h1>
             <h1 class="h3 mb-3 font-weight-normal">Erreur : {{form.message}}</h1>
-            <h1 class="h3 mb-3 font-weight-normal"><a href="index.php?page=connexion">Retourner sur 
-            la page de connexion</a></h1>  
-        {% endif %} 
-    {% else %} 
+            <h1 class="h3 mb-3 font-weight-normal"><a href="index.php?page=connexion">Retourner sur
+            la page de connexion</a></h1>
+        {% endif %}
+    {% else %}
   <form class="form-signin" action="index.php?page=connexion" method="post" enctype="application/x-www-form-urlencoded">
       <h1 class="h3 mb-3 font-weight-normal">Connectez-vous sur Guy Mollet Shop</h1>
       <label for="inputEmail" class="sr-only">Email:</label>
@@ -24,4 +24,4 @@
       <a href="index.php?page=inscription">S'inscrire</a>
  </form>
     {% endif %}
-{% endblock %} 
+{% endblock %}

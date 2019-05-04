@@ -1,7 +1,7 @@
 {% extends "base.html.twig" %}
 {% block title %} {{ parent() }} Administration {% endblock %}
 
-{% block contenu %} 
+{% block contenu %}
 
     <h1>Administration - Gestion des éditeurs</h1>
 
@@ -13,7 +13,7 @@
                 <input type="text" id="inputLibelle" name="inputLibelle" class="form-control" placeholder="Saisir un libelle" required autofocus>
                 <button class="btn btn-lg btn-primary btn-block" type="submit" name="btAjoutE">Ajouter</button>
             </form>
-        </div>    
+        </div>
     </div>
 
     <div class="panel panel-default">
@@ -36,10 +36,10 @@
                                 </form></div>
                         </td>
 
-                    </tr> 
+                    </tr>
                 {% endfor %}
             </table>
         </div>
     </div>
 
-{% endblock %} 
+{% endblock %}

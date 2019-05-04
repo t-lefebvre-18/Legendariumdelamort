@@ -225,65 +225,55 @@ class Livre {
 
     public function delete($id)
     {
-
         $this->delete->execute(array(':id' => $id));
-
-        if ($this->delete->errorCode() != 0) {
-
+        if ($this->delete->errorCode() != 0)
+        {
             print_r($this->delete->errorInfo());
         }
     }
 
-    public function listeType() {
-
+    public function listeType()
+    {
         $this->listeType->execute();
-
-        if ($this->listeType->errorCode() != 0) {
-
+        if ($this->listeType->errorCode() != 0)
+        {
             print_r($this->listeType->errorInfo());
         }
-
         return $this->listeType->fetchAll();
     }
 
-    public function listeAuteur() {
-
+    public function listeAuteur()
+    {
         $this->listeAuteur->execute();
-
-        if ($this->listeAuteur->errorCode() != 0) {
-
+        if ($this->listeAuteur->errorCode() != 0)
+        {
             print_r($this->listeAuteur->errorInfo());
         }
-
         return $this->listeAuteur->fetchAll();
     }
 
-    public function listeEditeur() {
-
+    public function listeEditeur()
+    {
         $this->listeEditeur->execute();
-
-        if ($this->listeEditeur->errorCode() != 0) {
-
+        if ($this->listeEditeur->errorCode() != 0)
+        {
             print_r($this->listeEditeur->errorInfo());
         }
-
         return $this->listeEditeur->fetchAll();
     }
 
-    public function listeDispo() {
-
+    public function listeDispo()
+    {
         $this->listeDispo->execute();
-
-        if ($this->listeDispo->errorCode() != 0) {
-
+        if ($this->listeDispo->errorCode() != 0)
+        {
             print_r($this->listeDispo->errorInfo());
         }
-
         return $this->listeDispo->fetchAll();
     }
 
-    public function insert($titre, $auteur, $editeur, $annee, $type, $isbn, $resume, $dispo, $prix, $nbrexemplaire, $photo) {
-
+    public function insert($titre, $auteur, $editeur, $annee, $type, $isbn, $resume, $dispo, $prix, $nbrexemplaire, $photo)
+    {
         if ($photo != NULL)
             $photo = "../web/images/$photo";
         else
@@ -291,31 +281,27 @@ class Livre {
         $date = date("Y-m-d");
         $this->insert->execute(array(':titre' => $titre, ':auteur' => $auteur, ':editeur' => $editeur, ':annee' => $annee, ':type' => $type, ':date'=>$date,
             ':isbn' => $isbn, ':resume' => $resume, ':dispo' => $dispo, ':prix' => $prix, ':nbrexemplaire' => $nbrexemplaire, ':photo' => $photo));
-
-        if ($this->insert->errorCode() != 0) {
-
+        if ($this->insert->errorCode() != 0)
+        {
             print_r($this->insert->errorInfo());
         }
     }
 
-    public function selectByID($id) {
-
+    public function selectByID($id)
+    {
         $this->selectByID->execute(array(':id' => $id));
-
-        if ($this->selectByID->errorCode() != 0) {
-
+        if ($this->selectByID->errorCode() != 0)
+        {
             print_r($this->selectByID->errorInfo());
         }
-
         return $this->selectByID->fetchAll();
     }
 
-    public function update($id, $titre, $auteur, $editeur, $annee, $type, $isbn, $resume, $dispo, $prix, $nbrexemplaire) {
-
+    public function update($id, $titre, $auteur, $editeur, $annee, $type, $isbn, $resume, $dispo, $prix, $nbrexemplaire)
+    {
         $this->update->execute(array(':id' => $id, ':titre' => $titre, ':auteur' => $auteur, ':editeur' => $editeur, ':annee' => $annee, ':type' => $type, ':isbn' => $isbn, ':resume' => $resume, ':dispo' => $dispo, ':prix' => $prix, ':nbrexemplaire' => $nbrexemplaire));
-
-        if ($this->update->errorCode() != 0) {
-
+        if ($this->update->errorCode() != 0)
+        {
             print_r($this->update->errorInfo());
         }
     }

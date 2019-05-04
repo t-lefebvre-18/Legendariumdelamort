@@ -1,0 +1,19 @@
+{
+  "logger": {
+    "title": "Remote Sync"
+  },
+  "transport": "ftp",
+  "uploadOnSave": true,
+  "useAtomicWrites": false,
+  "deleteLocal": false,
+  "hostname": "si6.arras-sio.com",
+  "port": "21",
+  "target": "/",
+  "ignore": [
+    ".remote-sync.json",
+    ".git/**"
+  ],
+  "username": "rjousse",
+  "password": "lojbxuzp",
+  "watch": []
+}

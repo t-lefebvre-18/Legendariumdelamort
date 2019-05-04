@@ -1,8 +1,8 @@
 <?php
 
 $config['serveur'] ='localhost';
-$config['login'] = 'root';
-$config['mdp'] = 'btsinfo';
-$config['bd'] = 'bdvente';
+$config['login'] = 'rjousse';
+$config['mdp'] = 'lojbxuzp';
+$config['bd'] = 'bdsi62019rjousse';
 
 ?>
