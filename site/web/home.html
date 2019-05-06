@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/custom.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+  <title></title>
+</head>
+
+<body>
+
+  <!-- Nav Bar ==sticky-top================================================ -->
+  <div class="jumbotroncustom imgcenter"  >
+    <img src="images/bande.png" style="height: 8em">
+
+  </div>
+
+  <nav class="navbar sticky-top navbar-expand-lg navbar-default">
+    <a class="navbar-brand" href="#">LégendariuM</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" style="color: #fff">
+      <i class="fas fa-bars"> </i>
+
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav mr-auto  ">
+        <li class="nav-item ">
+          <a class="nav-link " href="#">Catalogue</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">jdr</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="borderimg1">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+
+      <!-- Menu Profile================================================== -->
+      <ul class="navbar-nav " style="margin-left: 0em; margin-right: 0em;">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
+            <div class="container">
+
+              <img src="images/images.png" alt="Bootstrap" class="img-round" style="width:40px; height:40px ;">
+              <sup class="required top-right" title="Required"><span class="badge badge-pill badge-danger">5</span></sup>
+
+            </div>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right">
+            <ul>
+              <li> <img src="images/images.png" alt="Bootstrap" class="img-round imgcenter" style="width:60px; height:60px ; "></li>
+              <li>
+                <p class="textcenter"> Exemple User </P>
+                <p class="textemal"> exemple.address@email.com </p>
+
+              </li>
+              <div class="dropdown-divider"></div>
+              <li> <a class="dropdown-item" href="Account settings.html"><i class="fas fa-user-cog"> </i> Account settings </a></li>
+              <div class="dropdown-divider"></div>
+              <li> <a class="dropdown-item" href="#Administration settings"><i class="fas fa-server"> </i> Administration settings </a></li>
+              <div class="dropdown-divider"></div>
+              <li><a class="dropdown-item " href="#Notification" data-toggle="modal" data-target="#myModal"><i class="fas fa-bell"> </i> Notification <span class="badge badge-pill badge-danger">5</span> </a></li>
+              <div class="dropdown-divider"></div>
+              <li><a class="dropdown-item " href="#My cart"><i class="fas fa-shopping-basket"> </i> My cart </a></li>
+              <div class="dropdown-divider"></div>
+              <li><a class="dropdown-item " href="#My favorite"><i class="fas fa-star"> </i> My favorite </a></li>
+              <div class="dropdown-divider"></div>
+              <li><a class="dropdown-item " href="#My JDR"><i class="fas fa-hat-wizard"> </i> My JDR </a></li>
+
+              <div class="dropdown-divider"></div>
+              <li><a class="dropdown-item" href="#Sign out"><i class="fas fa-sign-out-alt"> </i> Sign out </a></li>
+              <div class="dropdown-divider"></div>
+              <li><a class="dropdown-item" href="signin.html"><i class="fas fa-sign-in-alt"> </i> Log in </a></li>
+            </ul>
+
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Body ================================================== -->
+
+  <!-- Notification ================================================== -->
+  <div class="container">
+
+
+    <!-- The Modal -->
+    <div class="modal fade" id="myModal">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Notification</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+            <div class="alert alert-light alert-dismissible fade show">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              <strong>New Book! </strong> Hey there is a new book to buy.
+            </div>
+            <hr />
+            <div class="alert alert-light alert-dismissible fade show">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              <strong>New Category! </strong> Hey there is a new category to watch.
+            </div>
+            <hr />
+            <div class="alert alert-light alert-dismissible fade show">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              <strong>New Friends! </strong> Hey there is a new friend request.
+            </div>
+            <hr />
+            <div class="alert alert-light alert-dismissible fade show">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              <strong>New JDR! </strong> Hey there is a new part of JDR.
+            </div>
+            <hr />
+            <div class="alert alert-light alert-dismissible fade show">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              <strong>New Notification! </strong> Hey there is a new notification.
+            </div>
+          </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+  
+  <!-- Contact ================================================== -->
+  <div class="container">
+
+
+    <!-- The Modal -->
+    <div class="modal fade" id="myModal2">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <form method="post">
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Contact Form</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+
+              <h3>Drop Us a Message</h3>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input type="text" name="txtName" class="form-control" placeholder="Your Name *" value="" required focus />
+                  </div>
+                  <div class="form-group">
+                    <input type="email" name="txtEmail" class="form-control" placeholder="Your Email *" value="" required focus />
+                  </div>
+                  <div class="form-group">
+                    <input type="text" name="txtObject" class="form-control" placeholder="Your Object *" value="" required focus />
+                  </div>
+                  <div class="form-group">
+                    <input type="tel" name="txtPhone" class="form-control" placeholder="Your Phone Number " value="" />
+                  </div>
+
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <textarea name="txtMsg" class="form-control" placeholder="Your Message *" style="width: 100%; height: 200px;" required focus></textarea>
+                  </div>
+                </div>
+              </div>
+
+
+
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+
+              <input type="submit" name="btnSubmit" class="btn btn-secondary" value="Send Message" />
+
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  
+  <div class="container-fluid">
+    <div class="row" style="margin-top:5em;margin-bottom:5em">
+      <div class="col-12	col-sm-12	col-md-12	col-lg-12	col-xl-3">
+        <div id="borderimg2">
+          <div class="card">
+            <!-- Sidebar -->
+
+            <div id="sidebar-wrapper">
+              <ul class="sidebar-nav" id="menu-accordion">
+                <br>
+                <p>Category</p>
+                <hr />
+                <li class="panel dashboard"> <a data-toggle="collapse" class="collapsed" data-parent="#menu-accordion" href="#dashboard-link">Dashboard <i class="fas fa-angle-right"></i></a>
+                  <ul id="dashboard-link" class="collapse">
+                    <li><a href="#" class="active">SubTest1</a></li>
+                    <li><a href="#">SubTest1</a></li>
+                    <li><a href="#">SubTest1</a></li>
+                  </ul>
+                </li>
+                <hr />
+                <li class="panel transactions"> <a data-toggle="collapse" class="collapsed" data-parent="#menu-accordion" href="#transactions-link">Transactions <i class="fas fa-angle-right"></i></a>
+                  <ul id="transactions-link" class="collapse">
+                    <li><a href="#">SubTest2</a></li>
+                    <li><a href="#">SubTest2</a></li>
+                  </ul>
+                </li>
+                <hr />
+                <li class="panel inv"> <a data-toggle="collapse" class="collapsed" data-parent="#menu-accordion" href="#inv-link">Inventories <i class="fas fa-angle-right"></i></a>
+                  <ul id="inv-link" class="collapse">
+                    <li><a href="#">SubTest2</a></li>
+                    <li><a href="#">SubTest2</a></li>
+                    <li><a href="#">SubTest2</a></li>
+                    <li><a href="#">SubTest2</a></li>
+                  </ul>
+                </li>
+                <hr />
+                <li class="panel settings"> <a data-toggle="collapse" class="active" data-parent="#menu-accordion" href="#settings-link">Settings <i class="fas fa-angle-right"></i></a>
+                  <ul id="settings-link" class="collapse active">
+                    <li><a href="#">User Profile</a></li>
+                    <li class="active"><a href="#">Company Settings</a></li>
+                    <li><a href="#">Account Settings</a></li>
+                    <li><a href="#">Billing Info</a></li>
+                  </ul>
+                </li>
+                <hr />
+              </ul>
+            </div>
+            <!-- /#sidebar-wrapper -->
+            <p style="color: black; padding:1em;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12	col-sm-12	col-md-12	col-lg-12	col-xl-6">
+        <div id="borderimg2">
+
+
+          <div class="card">
+
+            <h1 style="color: black; padding:1em; " class="textcenter">Nos Nouveauter</h1>
+
+            <!-- Top content -->
+            <div class="top-content" style="padding:1em">
+              <div class="container-fluid" id="borderimg3">
+                <div id="carousel-example" class="carousel slide" data-ride="carousel">
+                  <div class="carousel-inner row w-100 mx-auto" role="listbox">
+                    <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3 active">
+                      <a href="#"><img src="images/livre1.png" class="img-fluid mx-auto d-block" alt="img1"></a>
+                    </div>
+                    <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
+                      <a href="#"><img src="images/livre2.png" class="img-fluid mx-auto d-block" alt="img2"></a>
+                    </div>
+                    <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
+                      <a href="#"><img src="images/livre3.png" class="img-fluid mx-auto d-block" alt="img3"></a>
+                    </div>
+                    <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
+                      <a href="#"><img src="images/livre4.png" class="img-fluid mx-auto d-block" alt="img4"></a>
+                    </div>
+                    <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
+                      <a href="#"><img src="images/livre5.png" class="img-fluid mx-auto d-block" alt="img5"></a>
+                    </div>
+                    <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
+                      <a href="#"><img src="images/livre6.png" class="img-fluid mx-auto d-block" alt="img6"></a>
+                    </div>
+                    <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
+                      <a href="#"><img src="images/livre7.png" class="img-fluid mx-auto d-block" alt="img7"></a>
+                    </div>
+                    <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
+                      <a href="#"><img src="images/livre8.png" class="img-fluid mx-auto d-block" alt="img8"></a>
+                    </div>
+                  </div>
+                  <a class="carousel-control-prev" href="#carousel-example" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="carousel-control-next" href="#carousel-example" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+
+            <p style="color: black; padding:1em">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+      <div class="col-12	col-sm-12	col-md-12	col-lg-12	col-xl-3">
+        <div id="borderimg2">
+
+
+          <div class="card">
+            <div style="padding:1em">
+
+              <p><i class="fas fa-envelope fa-lg"></i> <a class="collapsed" data-toggle="modal" data-target="#myModal2" href="#contact"> contact@legendarium.com</a></p>
+              <p><i class="fas fa-phone fa-lg"></i> 03 04 05 06 07</p>
+              <p><i class="fas fa-home fa-lg"></i> <a href="https://www.google.com/maps/place/20+Rue+Emile+Legrelle,+62000+Arras/@50.2893932,2.775862,17z/data=!3m1!4b1!4m5!3m4!1s0x47dd4876806fd45f:0x9e2e05bc2b75caae!8m2!3d50.2893932!4d2.7780507"> 20
+                  rue Emile Legrelle 62000 - ARRAS</a></p>
+            </div>
+
+            <p style="color: black; padding:1em">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Footer ================================================== -->
+  <div class="jumbotron footer text-center" style="margin-bottom:0">
+    <p>Footer</p>
+  </div>
+
+
+
+
+
+
+
+  <style media="screen">
+
+  </style>
+
+
+
+  <!-- Bootstrap core JavaScript================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script type="text/javascript">
+
+
+  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script>
+    window.jQuery || document.write('<script src="js/jquery3.2.1.min.js"><\/script>')
+  </script>
+  <script src="js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+    window.onscroll = function() {
+      myFunction()
+    };
+
+    var navbar = document.getElementById("navbar");
+    var sticky = navbar.offsetTop;
+
+    function myFunction() {
+      if (window.pageYOffset >= sticky) {
+        navbar.classList.add("sticky")
+      } else {
+        navbar.classList.remove("sticky");
+      }
+    }
+  </script>
+
+  <script type="text/javascript">
+    /*
+  Carousel
+*/
+    $('#carousel-example').on('slide.bs.carousel', function(e) {
+      /*
+          CC 2.0 License Iatek LLC 2018 - Attribution required
+      */
+      var $e = $(e.relatedTarget);
+      var idx = $e.index();
+      var itemsPerSlide = 4;
+      var totalItems = $('.carousel-item').length;
+
+      if (idx >= totalItems - (itemsPerSlide - 1)) {
+        var it = itemsPerSlide - (totalItems - idx);
+        for (var i = 0; i < it; i++) {
+          // append slides to end
+          if (e.direction == "left") {
+            $('.carousel-item').eq(i).appendTo('.carousel-inner');
+          } else {
+            $('.carousel-item').eq(0).appendTo('.carousel-inner');
+          }
+        }
+      }
+    });
+  </script>
+
+
+</body>
+
+</html>
+
+<!--<i class="fas fa-caret-down"></i>-->

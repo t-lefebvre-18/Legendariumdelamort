@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/bootswatch.css" rel="stylesheet">
+  <link href="css/custom.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+  <title></title>
+</head>
+
+<body>
+<!-- Nav Bar ==sticky-top================================================ -->
+  <nav class="navbar  navbar-expand-lg navbar-default " data-toggle="collapse" data-target="#navbar-collapse-x">
+    <a class="navbar-brand" href="index.html"><img src="images/logo2.png" style="height: 40px;"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      <ul class="navbar-nav mr-auto ">
+        <li class="nav-item ">
+          <a class="nav-link" href="#">Catalogue <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">JDR</a>
+        </li>
+
+
+
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="borderimg1">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"  >Search</button>
+      </form>
+
+<!-- Menu Profile================================================== -->
+      <ul class="navbar-nav " style="margin-left: 2em; margin-right: 2em;">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
+          <div class="container">
+
+              <img src="images/images.png" alt="Bootstrap" class="img-round" style="width:40px; height:40px ;">
+              <sup class="required top-right" title="Required"><span class="badge badge-pill badge-danger">5</span></sup>
+
+          </div>
+        </a>
+          <div class="dropdown-menu dropdown-menu-right">
+            <ul>
+              <li> <img src="images/images.png" alt="Bootstrap" class="img-round imgcenter" style="width:60px; height:60px ; "></li>
+              <li>
+                <p class="textcenter"> Exemple User </P>
+                <p class="textemal"> exemple.address@email.com </p>
+
+              </li>
+              <div class="dropdown-divider"></div>
+              <li> <a class="dropdown-item" href="Account settings.html"><i class="fas fa-user-cog"> </i> Account settings </a></li>
+              <div class="dropdown-divider"></div>
+              <li> <a class="dropdown-item" href="#Administration settings"><i class="fas fa-server"> </i> Administration settings </a></li>
+              <div class="dropdown-divider"></div>
+              <li><a class="dropdown-item " href="#Notification"><i class="fas fa-bell"> </i> Notification  <span class="badge badge-pill badge-danger">5</span> </a></li>
+              <div class="dropdown-divider"></div>
+              <li><a class="dropdown-item " href="#My cart"><i class="fas fa-shopping-basket"> </i> My cart </a></li>
+              <div class="dropdown-divider"></div>
+              <li><a class="dropdown-item " href="#My favorite"><i class="fas fa-star"> </i> My favorite </a></li>
+              <div class="dropdown-divider"></div>
+              <li><a class="dropdown-item " href="#My JDR"><i class="fas fa-hat-wizard"> </i> My JDR </a></li>
+
+              <div class="dropdown-divider"></div>
+              <li><a class="dropdown-item" href="#Sign out"><i class="fas fa-sign-out-alt"> </i> Sign out </a></li>
+              <div class="dropdown-divider"></div>
+              <li><a class="dropdown-item" href="signin.html"><i class="fas fa-sign-in-alt"> </i> Log in </a></li>
+            </ul>
+
+          </div>
+        </li>
+      </ul>
+
+    </div>
+  </nav>
+
+<!-- Body ================================================== -->
+<div class="container">
+
+
+<!--
+<div id="carouselExampleIndicators" class="carousel slide " data-ride="carousel">
+<ol class="carousel-indicators">
+  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+</ol>
+<div class="carousel-inner carousel-custom" >
+
+  <div class="carousel-item active carousel-custom"  >
+  <img src="images/1.jpg" alt="..."  >
+  <div class="carousel-caption d-none d-md-block">
+    <h5 >Carousel 1</h5>
+    <p>...</p>
+  </div>
+</div>
+  <div class="carousel-item carousel-custom">
+  <img src="images/2.jpg" alt="...">
+  <div class="carousel-caption d-none d-md-block">
+    <h5>Carousel 2</h5>
+    <p>...</p>
+  </div>
+</div>
+  <div class="carousel-item carousel-custom">
+  <img src="images/3.jpg" alt="...">
+  <div class="carousel-caption d-none d-md-block">
+    <h5>Carousel 3</h5>
+    <p>...</p>
+  </div>
+</div>
+</div>
+<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+  <span class="sr-only">Previous</span>
+</a>
+<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+  <span class="sr-only">Next</span>
+</a>
+</div>
+
+-->
+<div class="container">
+
+
+<div class="card" >
+  <div class="card-body">
+    <h4 class="card-title" style="color: #7f8c8d;">Account settings</h4>
+    <hr />
+    <div class="row">
+      <div class="col-4">
+  <p style="color: black">Profile</p>
+  <p style="color: black">Your email address is your identity on Heroku and is used to log in.</p>
+      </div>
+
+      <div class="col-8">
+        
+         <div class="input-group mb-3">
+   <input type="text" class="form-control" placeholder="Something clever..">
+   <div class="input-group-append">
+     <button class="btn btn-primary" type="button">OK</button>
+     <button class="btn btn-danger" type="button">Cancel</button>
+   </div>
+ </div>
+ <div class="input-group mb-3">
+  <input type="text" class="form-control" placeholder="Something clever..">
+  <div class="input-group-append">
+    <button class="btn btn-primary" type="button">OK</button>
+    <button class="btn btn-danger" type="button">Cancel</button>
+  </div>
+</div>
+<div class="input-group mb-3">
+  <input type="text" class="form-control" placeholder="Something clever..">
+  <div class="input-group-append">
+    <button class="btn btn-primary" type="button">OK</button>
+    <button class="btn btn-danger" type="button">Cancel</button>
+  </div>
+</div>
+      </div>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col-4">
+  <p style="color: black">Password</p>
+  <p style="color: black">Changing your password will also reset your API key.</p>
+      </div>
+
+      <div class="col-8">
+
+        <div class="input-group mb-3">
+  <input type="text" class="form-control" placeholder="Something clever..">
+  <div class="input-group-append">
+    <button class="btn btn-primary" type="button">OK</button>
+    <button class="btn btn-danger" type="button">Cancel</button>
+  </div>
+</div>
+<div class="input-group mb-3">
+  <input type="text" class="form-control" placeholder="Something clever..">
+  <div class="input-group-append">
+    <button class="btn btn-primary" type="button">OK</button>
+    <button class="btn btn-danger" type="button">Cancel</button>
+  </div>
+</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+</div>
+
+
+
+  <!-- Bootstrap core JavaScript================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script>
+    window.jQuery || document.write('<script src="js/jquery3.2.1.min.js"><\/script>')
+  </script>
+  <script src="js/bootstrap.min.js"></script>
+
+
+</body>
+
+</html>
+
+<!--<i class="fas fa-caret-down"></i>-->

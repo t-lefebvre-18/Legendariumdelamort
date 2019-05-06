@@ -1,27 +1,200 @@
 {% extends "base.html.twig" %}
-{% block style %}<link href="css/style-signin.css" rel="stylesheet"> {% endblock %}
-{% block title %} {{ parent() }} Se connecter {% endblock %}
-{% block contenu %}
-    {% if form.valide is defined %}
-        {% if form.valide == true %}
-            <h1 class="h3 mb-3 font-weight-normal">Connexion réussie</h1>
-            <h1 class="h3 mb-3 font-weight-normal">Vous êtes connectés avec l'e-mail suivant : {{form.email}}</h1>
-            <h1 class="h3 mb-3 font-weight-normal"><a href="index.php">Retourner sur la page d'accueil</h1>
-        {% else %}
-            <h1 class="h3 mb-3 font-weight-normal">Echec de la connexion</h1>
-            <h1 class="h3 mb-3 font-weight-normal">Erreur : {{form.message}}</h1>
-            <h1 class="h3 mb-3 font-weight-normal"><a href="index.php?page=connexion">Retourner sur
-            la page de connexion</a></h1>
-        {% endif %}
-    {% else %}
-  <form class="form-signin" action="index.php?page=connexion" method="post" enctype="application/x-www-form-urlencoded">
-      <h1 class="h3 mb-3 font-weight-normal">Connectez-vous sur Guy Mollet Shop</h1>
-      <label for="inputEmail" class="sr-only">Email:</label>
-      <input type="email" id="inputEmail" name="inputEmail" class="form-control" placeholder="Email" required autofocus>
-      <label for="inputPassword" class="sr-only">Mot de passe:</label>
-      <input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
-      <button class="btn btn-lg btn-primary btn-block" type="submit" name="btConnecter">Se connecter</button>
-      <a href="index.php?page=inscription">S'inscrire</a>
- </form>
-    {% endif %}
+{% block style %}<link href="css/style-signin.css" rel="stylesheet"> 
+    
 {% endblock %}
+{% block title %} {{ parent() }} catalogue {% endblock %}
+
+{% block contenu %}
+
+      <style >   
+
+
+h1 {
+  font-size: 1.5em;
+  font-weight: normal;
+  color: #333;
+  margin:-15px 0 0 0;
+  clear:both;
+}
+.viini-kortti {
+  width: 190px;
+  height: 190px;
+  overflow: hidden;
+  float: left;
+  margin: 0 5px 5px 0;
+  -webkit-box-shadow: inset 0px 0px 20px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0px 0px 20px 0px rgba(0, 0, 0, 0.3);
+  -webkit-transition:all 0.3s ease-in;  
+   -moz-transition:all 0.3s ease-in;  
+   -o-transition:all 0.3s ease-in;  
+   transition:all 0.3s ease-in; 
+}
+.viini-kortti h2 {
+     color: #fff;
+  font-size: 0.8em;
+  font-weight:normal;
+  font-size: 0.9em;  
+  padding: 10px 20px 10px 20px;
+  margin: 150px 0 0 0; 
+  background: rgba(0,0,0,0.3);
+  -webkit-transition:margin-top 0.3s ease-in;  
+  -moz-transition:margin-top 0.3s ease-in;  
+  -o-transition:margin-top 0.3s ease-in;  
+  transition:margin-top 0.3s ease-in; 
+}
+.viini-kortti ul {
+     color: #fff;
+  font-size: 0.8em;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background: rgba(0,0,0,0.3);
+  margin: 0;
+  padding-left: 20px;
+  padding-bottom: 50px
+}
+.viini-kortti:hover h2 {
+  margin-top: 40px;
+}
+
+/*colors*/
+.p-marjaisa {
+  background: #c73412;
+}
+.p-pehmea {
+  background: #b41212;
+}
+.p-meheva {
+  background: #981a50;
+}
+.p-vivahteikas {
+  background: #722d78;
+}
+.p-roteva {
+  background: #4f2659;
+}
+.v-pehmea {
+  background: #fbf148;
+}
+.v-lempea {
+  background: #cee538;
+}
+.v-pirtea {
+  background: #7bc943;
+}
+.v-vivahteikas {
+  background: #519e72;
+}
+.v-runsas {
+  background: #325936;
+}
+
+
+  </style>
+ 
+    
+    <div class="container" style="margin-top:2em;margin-bottom:2em;margin-left:1em;">
+  <h1>Punaiset</h1>
+<!-- punkut-->
+<div class="viini-kortti p-marjaisa">
+  <h2>Pago del Vicario 50/50</h2>
+  <ul>
+    <li>Espanja, La Mancha</li>
+    <li>Tempranillo, Cabernet Sauvignon</li>
+    <li>14,99 €</li>
+  </ul>
+</div>
+<div class="viini-kortti p-pehmea">
+  <h2>Pago del Vicario 50/50</h2>
+  <ul>
+    <li>Espanja, La Mancha</li>
+    <li>Tempranillo, Cabernet Sauvignon</li>
+    <li>14,99 €</li>
+  </ul>
+</div>
+<div class="viini-kortti p-meheva">
+  <h2>Pago del Vicario 50/50</h2>
+  <ul>
+    <li>Espanja, La Mancha</li>
+    <li>Tempranillo, Cabernet Sauvignon</li>
+    <li>14,99 €</li>
+  </ul>
+</div>
+<div class="viini-kortti p-vivahteikas">
+  <h2>Pago del Vicario 50/50</h2>
+  <ul>
+    <li>Espanja, La Mancha</li>
+    <li>Tempranillo, Cabernet Sauvignon</li>
+    <li>14,99 €</li>
+  </ul>
+</div>
+<div class="viini-kortti p-roteva">
+  <h2>Pago del Vicario 50/50</h2>
+  <ul>
+    <li>Espanja, La Mancha</li>
+    <li>Tempranillo, Cabernet Sauvignon</li>
+    <li>14,99 €</li>
+  </ul> 
+</div>
+<div class="viini-kortti p-roteva">
+  <h2>Pago del Vicario 50/50</h2>
+  <ul>
+    <li>Espanja, La Mancha</li>
+    <li>Tempranillo, Cabernet Sauvignon</li>
+    <li>14,99 €</li>
+  </ul> 
+</div>
+
+<!-- valkkarit-->
+<h1>Valkoiset</h1>
+<div class="viini-kortti v-pehmea">
+  <h2>Pago del Vicario 50/50</h2>
+  <ul>
+    <li>Espanja, La Mancha</li>
+    <li>Tempranillo, Cabernet Sauvignon</li>
+    <li>14,99 €</li>
+  </ul>
+</div>
+<div class="viini-kortti v-lempea">
+  <h2>Pago del Vicario 50/50</h2>
+  <ul>
+    <li>Espanja, La Mancha</li>
+    <li>Tempranillo, Cabernet Sauvignon</li>
+    <li>14,99 €</li>
+  </ul> 
+</div>
+<div class="viini-kortti v-pirtea">
+  <h2>Pago del Vicario 50/50</h2>
+  <ul>
+    <li>Espanja, La Mancha</li>
+    <li>Tempranillo, Cabernet Sauvignon</li>
+    <li>14,99 €</li>
+  </ul>
+</div>
+<div class="viini-kortti v-vivahteikas">
+  <h2>Pago del Vicario 50/50</h2>
+  <ul>
+    <li>Espanja, La Mancha</li>
+    <li>Tempranillo, Cabernet Sauvignon</li>
+    <li>14,99 €</li>
+  </ul>
+</div>
+<div class="viini-kortti v-runsas">
+  <h2>Pago del Vicario 50/50</h2>
+  <ul>
+    <li>Espanja, La Mancha</li>
+    <li>Tempranillo, Cabernet Sauvignon</li>
+    <li>14,99 €</li>
+  </ul> 
+</div>
+<div class="viini-kortti v-runsas">
+  <h2>Pago del Vicario 50/50</h2>
+  <ul>
+    <li>Espanja, La Mancha</li>
+    <li>Tempranillo, Cabernet Sauvignon</li>
+    <li>14,99 €</li>
+  </ul> 
+</div>
+</div><!-- container-->
+
+{% endblock %} 
