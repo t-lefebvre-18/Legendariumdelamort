@@ -14,13 +14,13 @@
 
  </head>
  <body>
-     
+
  {% block body %}
   <div class="jumbotroncustom imgcenter"  >
     <img src="images/bande.png" style="height: 10em">
 
   </div>
-  
+
    <nav class="navbar sticky-top navbar-expand-lg navbar-default">
     <a class="navbar-brand" href="#">LégendariuM</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" style="color: #fff">
@@ -30,7 +30,7 @@
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
       <ul class="navbar-nav mr-auto  ">
         <li class="nav-item ">
-          <a class="nav-link " href="#">Catalogue</a>
+          <a class="nav-link " href="index.php?page=connexion">Catalogue</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Contact</a>
@@ -95,7 +95,7 @@
       </ul>
     </div>
   </nav>
-            
+
              <!-- Notification ================================================== -->
   <div class="container">
 
@@ -149,7 +149,7 @@
     </div>
 
   </div>
-  
+
   <!-- Contact ================================================== -->
   <div class="container">
 
@@ -210,7 +210,7 @@
 
   </div>
 
-  
+
    <!-- login ================================================== -->
    <!-- Modal -->
 <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -222,31 +222,31 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-       
+
       <div class="modal-body">
            <form action="#" method="post" style="max-width:500px;margin:auto">
          <div class="input-container">
               <i class="fas fa-user icon"></i>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+              <input type="email" class="form-control" id="inputEmail" name="inputEmail" aria-describedby="emailHelp" placeholder="Enter email">
             </div>
             <div class="input-container " style="padding-top:0.5em">
               <i class="fas fa-lock icon"></i>
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+              <input type="password" class="form-control" id="inputPassword" name="inputPassword" placeholder="Password">
             </div>
-          <div class="textcenter"> 
-           <button type="submit" class="btnsingin ">Log in</button>
+          <div class="textcenter">
+           <button type="submit" class="btConnecter">Log in</button>
           </div>
                </form>
       </div>
       <div class="modal-footer textcenter">
-       
+
           <p>New to legendarium? <a  data-dismiss="modal" data-toggle="modal" data-target="#singup">Sign Up</a> </p>
       </div>
-             
+
     </div>
   </div>
 </div>
-   
+
    <!-- singup ================================================== -->
    <!-- Modal -->
 <div class="modal fade" id="singup" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -258,7 +258,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-       
+
       <div class="modal-body">
          <form action="#" method="post" style="max-width:500px;margin:auto">
   <!--  <h2>Register Form</h2>-->
@@ -271,7 +271,7 @@
     </label>
     <div class="input-container">
       <i class="fas fa-user icon"></i>
-      <input type="text" class="form-control" id="exampleInputFirstname1" aria-describedby="emailHelp" placeholder="Enter first name" required>
+      <input type="text" class="form-control" id="prenom" name="prenom" aria-describedby="emailHelp" placeholder="Enter first name" required>
     </div>
   </div>
 
@@ -282,7 +282,7 @@
     </label>
     <div class="input-container" >
       <i class="fas fa-user icon"></i>
-       <input type="text" class="form-control" id="exampleInputLastname1" placeholder="Enter last name" required>
+       <input type="text" class="form-control" id="nom" name="nom" placeholder="Enter last name" required>
     </div>
   </div>
 
@@ -293,7 +293,7 @@
     </label>
     <div class="input-container" >
     <i class="fas fa-envelope icon"></i>
-       <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" required>
+       <input type="email" class="form-control" id="inputEmail" name="inputEmail" placeholder="Enter email" required>
     </div>
   </div>
 
@@ -304,7 +304,7 @@
     </label>
     <div class="input-container" >
       <i class="fas fa-lock icon" ></i>
-       <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter password" required>
+       <input type="password" class="form-control" id="inputPassword" name="inputPassword" placeholder="Enter password" required>
     </div>
   </div>
 
@@ -315,28 +315,30 @@
     </label>
     <div class="input-container" >
       <i class="fas fa-lock icon" ></i>
-       <input type="password" class="form-control" id="exampleInputConfimpassword1" placeholder="Confirm password" required>
+       <input type="password" class="form-control" id="inputPassword2" name="inputPassword2" placeholder="Confirm password" required>
     </div>
   </div>
-<div class="textcenter"> 
-    <button type="submit" class="btnsingin">Register</button>
+
+
+<div class="textcenter">
+    <button type="submit" class="btInscrire">Register</button>
           </div>
 
 
   </form>
       </div>
       <div class="modal-footer textcenter">
-       
+
           <p>New to legendarium? <a data-dismiss="modal" data-toggle="modal" data-target="#login">Sign Up</a> </p>
       </div>
-            
+
     </div>
   </div>
 </div>
   <!-- Body ================================================== -->
 
-     
- 
+
+
 
 
 
@@ -404,12 +406,12 @@
 
 
           <div class="card">
-              
+
  {% block contenu %}
 
  {% endblock %}
 
-           
+
           </div>
         </div>
       </div>

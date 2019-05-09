@@ -15,7 +15,7 @@ function getPage($db){
  $lesPages['modifutilisateur'] = "actionModifuser;1" ;
  $lesPages['role'] = "actionRole;1" ;
  $lesPages['modifrole'] = "actionModifrole;1" ;
-if ($db!=null){
+if ($db !=null){
  if(isset($_GET['page'])){
  // Nous mettons dans la variable $page, la valeur qui a été passée dans le lien
  $page = $_GET['page']; }
