@@ -1,0 +1,49 @@
+{% extends "base.html.twig" %}
+{% block title %}{{ parent() }}Catalogue{% endblock %}
+{% block activeCA %}active{% endblock %}
+{% block contenu %}
+<div>
+  <h3 class="textcenter">Liste des Catalogue !</h3>
+  <hr>
+  {% for c in listecatalogue %}
+  <div>
+    <h3>Nos 10 dernières collections {{ c.libellecollection }}</h3>
+  </div>
+  {% if liste %}
+
+
+  <div class="slider">
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        {% for l in liste %}
+        <div class="swiper-slide">
+          <div class="sliderCard">
+            <div class="sliderText" style="background-image: url('{{ l.couverture }}');">
+            <h3>{{ l.titre }}</h3>
+            </div>
+            <div class="sliderContent">
+                <a href="index.php?page=livre&id={{ l.id }}">voir</a>
+                <p>Prix {{ l.prix }}€</p>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <div class="textcenter" style="margin:1em;">
+          <a href="index.php?page=collection" class="btn-event">Voir plus de livre</a>
+  </div>
+  {% else %}
+    <h4 class="textcenter">Il n'y a aucun livre</h4>
+  {% endif %}
+  <hr>
+  {% else %}
+      <h4 class="textcenter">Il n'y a aucune collections</h4>
+      <hr/>
+    {% endfor %}
+
+
+
+</div>
+{% endblock %}

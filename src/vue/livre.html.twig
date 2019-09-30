@@ -1,0 +1,161 @@
+{% extends "base.html.twig" %}
+{% block title %}{{ parent() }}Collection{% endblock %}
+{% block activeCA %}active{% endblock %}
+{% block contenu %}
+<div>
+  <h3 class="textcenter">Livre !</h3>
+  <hr>
+
+  {% if form.livre is defined %}
+    {% if form.livre != null %}
+    <div class="row">
+      <div class="col-12 	col-sm-6 col-md-6 col-lg-6 col-xl-6 page-col">
+        <div class="div-img-livre">
+        <img class="img-livre" src="{{form.livre.couverture}}" alt="">
+      </div>
+      </div>
+      <div class="col-12 	col-sm-6 col-md-4 col-lg-6 col-xl-4 page-col">
+        <h3 class="blod">{{form.livre.titre}}</h3>
+
+        <h5>{{form.auteur.nomauteur}}{{form.auteur.prenomauteur}}</h5>
+        <p>EDITEUR : {{form.editeur.nomediteur}}</p>
+        <h6>DATE DE PARUTION : {{form.livre.datelivre}}</h6>
+        <p>STOCK : En stock, livré sous 5 à 7 jours - Quantité limitée</p>
+      </div>
+      <div class="col-12 	col-sm-12 col-md-2 col-lg-12 col-xl-2 page-col">
+        <h5 class="blod">{{ form.livre.prix }}€</h5>
+
+    </div>
+</div>
+<hr>
+<div >
+  <h3>Autre Livre du même auteur</h3>
+
+</div>
+
+<div class="slider">
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+
+      <div class="swiper-slide">
+        <div class="sliderCard">
+          <div class="sliderText" style="background-color: #40d47e;">
+            <h3>Autre livre</h3>
+          </div>
+          <div class="sliderContent">
+              <a href="#">voir</a>
+              <p>Prix 0€</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide">
+        <div class="sliderCard">
+          <div class="sliderText" style="background-color: #4aa3df;">
+            <h3>Autre livre</h3>
+          </div>
+          <div class="sliderContent">
+              <a href="#">voir</a>
+              <p>Prix 0€</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide">
+        <div class="sliderCard">
+          <div class="sliderText" style="background-color: #f2ca27;">
+            <h3>Autre livre</h3>
+          </div>
+          <div class="sliderContent">
+              <a href="#">voir</a>
+              <p>Prix 0€</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide">
+        <div class="sliderCard">
+          <div class="sliderText" style="background-color: #f4a62a;">
+            <h3>Autre livre</h3>
+          </div>
+          <div class="sliderContent">
+              <a href="#">voir</a>
+              <p>Prix 0€</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide">
+        <div class="sliderCard">
+          <div class="sliderText" style="background-color: #ea6153;">
+            <h3>Autre livre</h3>
+          </div>
+          <div class="sliderContent">
+              <a href="#">voir</a>
+              <p>Prix 0€</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide">
+        <div class="sliderCard">
+          <div class="sliderText" style="background-color: #f4a62a;">
+            <h3>Autre livre</h3>
+          </div>
+          <div class="sliderContent">
+              <a href="#">voir</a>
+              <p>Prix 0€</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide">
+        <div class="sliderCard">
+          <div class="sliderText" style="background-color: #f2ca27;">
+            <h3>Autre livre</h3>
+          </div>
+          <div class="sliderContent">
+              <a href="#">voir</a>
+              <p>Prix 0€</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide">
+        <div class="sliderCard">
+          <div class="sliderText" style="background-color: #4aa3df;">
+            <h3>Autre livre</h3>
+          </div>
+          <div class="sliderContent">
+              <a href="#">voir</a>
+              <p>Prix 0€</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide">
+        <div class="sliderCard">
+          <div class="sliderText" style="background-color: #40d47e;">
+            <h3>Autre livre</h3>
+          </div>
+          <div class="sliderContent">
+              <a href="#">voir</a>
+              <p>Prix 0€</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+    {% endif %}
+  {% endif %}
+
+
+
+
+
+</div>
+{% endblock %}

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/swiper.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  {% block style %}{% endblock %}
+  <title>{% block title %}Légendarium -{% endblock %}</title>
+</head>
+
+<body style="background-image: url('img/fond.jpg');">
+  <nav class="navbar navbar-expand-md navbar-light bg-custom box-shadow box-full">
+    <a class="navbar-brand" href="index.php">LegendariuM</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item bg-item {% block activeAC %}{% endblock %}"><a class="nav-link" href="index.php?page=administration">Accueil</a></li>
+        <li class="nav-item bg-item {% block activeUS %}{% endblock %}"><a class="nav-link" href="index.php?page=adminutilisateur">Utilisateur</a></li>
+        <li class="nav-item bg-item {% block activeLI %}{% endblock %}"><a class="nav-link" href="index.php?page=adminlivre">Livre</a></li>
+        <li class="nav-item bg-item {% block activeCO %}{% endblock %}"><a class="nav-link" href="index.php?page=admincollection">Collection</a></li>
+        <li class="nav-item bg-item {% block activeGE %}{% endblock %}"><a class="nav-link" href="index.php?page=admingenre">Genre</a></li>
+        <li class="nav-item bg-item {% block activeAU %}{% endblock %}"><a class="nav-link" href="index.php?page=adminauteur">Auteur</a></li>
+        <li class="nav-item bg-item {% block activeED %}{% endblock %}"><a class="nav-link" href="index.php?page=adminediteur">Editeur</a></li>
+        <li class="nav-item bg-item {% block activeDI %}{% endblock %}"><a class="nav-link" href="index.php?page=admindisponibilite">Disponibilité</a></li>
+        <li class="nav-item bg-item {% block activeEV %}{% endblock %}"><a class="nav-link" href="index.php?page=adminevent">Event</a></li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{session.login}}</a>
+          <div class="dropdown-menu dropdown-menu-right shadow drop-pos " aria-labelledby="navbarDropdown">
+            <a class="dropdown-item " href="#"><i class="fas fa-user mr-3"></i>Paramètres du compte</a>
+
+            <a class="dropdown-item " href="index.php?page=administration"><i class="fas fa-sliders-h mr-3"></i>Paramètres d'administration</a>
+
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item " href="index.php?page=deconnexion"><i class="fas fa-sign-out-alt mr-3"></i>Déconnexion</a>
+
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="page">
+    <div class="page-card-admin">
+      <div class="row">
+        <div class="col-12 	col-sm-12 col-md-12 col-lg-12 col-xl-12 page-col">
+          {% block contenu %}
+              {% endblock %}
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- Footer -->
+  <footer class="page-footer-admin  box-shadow">
+
+    <div class="footer-head">
+      <div class="container">
+
+        <!-- Grid row-->
+        <div class="row py-4 d-flex align-items-center">
+
+          <!-- Grid column -->
+          <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
+            <h6 class="mb-0">Connectez-vous avec nous sur les réseaux sociaux !</h6>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-6 col-lg-7 text-center text-md-right">
+
+            <!-- Facebook -->
+            <a class="fb-ic">
+              <i class="fab fa-facebook-f white-text mr-4"> </i>
+            </a>
+            <!-- Twitter -->
+            <a class="tw-ic">
+              <i class="fab fa-twitter white-text mr-4"> </i>
+            </a>
+            <!-- Google +-->
+            <a class="gplus-ic">
+              <i class="fab fa-google-plus-g white-text mr-4"> </i>
+            </a>
+            <!--Linkedin -->
+            <a class="li-ic">
+              <i class="fab fa-linkedin-in white-text mr-4"> </i>
+            </a>
+            <!--Instagram-->
+            <a class="ins-ic">
+              <i class="fab fa-instagram white-text"> </i>
+            </a>
+
+          </div>
+          <!-- Grid column -->
+
+        </div>
+        <!-- Grid row-->
+
+      </div>
+    </div>
+
+    <!-- Footer Links -->
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center text-black-50 py-3">© 2019/2020 Copyright: Mise en avant - Réalisation T.Mendes | T.Lefebvre
+    </div>
+    <!-- Copyright -->
+
+  </footer>
+  <!-- Footer -->
+</body>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</html>

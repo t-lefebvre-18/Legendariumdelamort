@@ -1,0 +1,130 @@
+{% extends "baseAdmin.html.twig" %}
+{% block title %}
+  {{ parent() }}
+
+{% endblock %}
+{% block activeLI %}active{% endblock %}
+{% block contenu %}
+
+  <div class="centerdiv">
+    <div class="card box-shadow" style="width: 100%;">
+      <!-- <img src="{{ e.illustration }}" class="card-img-top" alt="..."> -->
+      <div class="card-body">
+        <h3 class="card-title">Table livre</h3>
+
+        <div class="table-responsive">
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Couverture / Titre</th>
+                <th scope="col">Auteur</th>
+                <th scope="col">Editeur</th>
+                <th scope="col">Date</th>
+                <th scope="col">Isbn</th>
+                <th scope="col">Prix</th>
+                <th scope="col">Disponibilité</th>
+                <th scope="col">Collection</th>
+                <th scope="col">Genre</th>
+                <!-- <th scope="col">J'aime</th> -->
+                <th scope="col">Modif</th>
+                <th scope="col">Trash</th>
+                <!-- <th scope="col"></th> -->
+              </tr>
+            </thead>
+            <tfoot>
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Couverture / Titre</th>
+                <th scope="col">Auteur</th>
+                <th scope="col">Editeur</th>
+                <th scope="col">Date</th>
+                <th scope="col">Isbn</th>
+                <th scope="col">Prix</th>
+                <th scope="col">Disponibilité</th>
+                <th scope="col">Collection</th>
+                <th scope="col">Genre</th>
+                <!-- <th scope="col">J'aime</th> -->
+                <th scope="col">Modif</th>
+                <th scope="col">Trash</th>
+                <!-- <th scope="col"></th> -->
+              </tr>
+            </tfoot>
+            <tbody>
+              {% for l in liste %}
+
+                <tr>
+                  <th scope="row">#{{ l.id }}</th>
+                  <td>
+                    <a class="img" href="#">
+                      {{ l.titre }}
+                      <div class="tooltip-img box-shadow">
+                        <img src="{{ l.couverture }}" alt="{{ l.titre }}" style=" height: 250px;">
+                      </div>
+                    </a>
+                  </td>
+                  <td>{{ l.nomauteur }}.{{ l.prenomauteur }}</td>
+                  <td>{{ l.nomediteur }}</td>
+                  <td>{{ l.datelivre }}</td>
+                  <td>{{ l.isbn }}</td>
+                  <td>{{ l.prix }}€</td>
+                  <td>{{ l.libelledisponibilite }}</td>
+                  <td>{{ l.libellecollection }}</td>
+                  <td>{{ l.libellegenre }}</td>
+                  <!-- <td>{{ l.jaime }}</td> -->
+                  <td>
+                    <a href="#">
+                      <i class="fas fa-edit icon"></i>
+                    </a>
+                  </td>
+                  <td>
+                    <button class="btn-form-modal" type="button" name="button" data-toggle="modal" data-target="#deleteLivre{{ l.id }}">
+                      <i class="fas fa-trash icon"></i>
+                    </button>
+                  </td>
+                  <!-- <td> <label class="checkbox"> <input type="checkbox" name="cocher[]" id="cocher[]" value="{{l.id}}"/> <span class="default"></span> </label> </td> -->
+                </tr>
+                <!-- Modal -->
+                <div class="modal fade" id="deleteLivre{{ l.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content box-shadow">
+                      <div class="card-header-modal">
+                        <h3 class="card-title" id="exampleModalLabel">Voulez vous supprimer ce livre ?</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="card-body">
+                        <p class="card-text">Attention ! Le livre
+                          <span class="span">{{ l.titre }}</span>
+                          ISBN :
+                          <span class="span">{{ l.isbn }}</span>
+                          sera suprimer !</p>
+                        <hr>
+                        <div class="textcenter">
+                          <a href="#" class="btn-event" data-dismiss="modal">Annuler</a>
+                          <a href="index.php?page=adminlivre&id={{l.id}}" class="btn-event-sup">Suprimer</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <!-- <p class="card-text"></p> -->
+
+        <br>
+        <div class="textcenter">
+          <a href="#" class="btn-event-sup">Suprimer</a>
+          <a href="index.php?page=ajoutlivre" class="btn-event">Ajouter</a>
+        </div>
+        <br>
+
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

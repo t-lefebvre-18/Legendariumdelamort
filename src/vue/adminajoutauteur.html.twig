@@ -1,0 +1,67 @@
+{% extends "baseAdmin.html.twig" %}
+{% block title %}
+  {{ parent() }}
+
+{% endblock %}
+{% block activeAU %}active{% endblock %}
+{% block contenu %}
+
+  <div class="centerdiv">
+    <div class="card box-shadow card-size">
+      <div class="card-body">
+      {% if form.valide is defined %}
+{% if form.valide == true %}
+<h3 class="card-title">{{ form.messageTitre }}</h3>
+<p class="cadr-text">{{ form.message }}</p>
+<hr>
+<div class="textcenter">
+  <a href="index.php?page=adminauteur" class="btn-event">Retour</a>
+  <a href="index.php?page=ajoutauteur" class="btn-event">Ajouter</a>
+</div>
+  {% else %}
+  <h3 class="card-title">{{ form.messageTitre }}</h3>
+  <p class="cadr-text">{{ form.message }}</p>
+  <hr>
+  <div class="textcenter">
+    <a href="index.php?page=adminauteur" class="btn-event">Retour</a>
+    <a href="index.php?page=ajoutauteur" class="btn-event">Ajouter</a>
+  </div>
+  {% endif %}
+{% else %}
+        <h3 class="card-title">Ajout auteur</h3>
+        <form method="post">
+
+          <div class="form-row">
+          <div class="col">
+            <!-- <label for="inputNom" >Saisir un nom</label> -->
+            <input class="form-control form-control-ajout" type="text" name="inputNom" placeholder="Saisir un nom" id="inputNom" required="required" autofocus="autofocus">
+            <span ></span>
+          </div>
+
+          <div class="col">
+            <!-- <label for="inputPrenom" >Saisir un prénom</label> -->
+            <input class="form-control form-control-ajout" type="text" name="inputPrenom" placeholder="Saisir un prenom" id="inputPrenom" required="required" autofocus="autofocus">
+            <span ></span>
+          </div>
+          </div>
+          <br/>
+
+            <div class="form-row">
+
+              <!-- <label for="inputBiographie">Saisir une biographie</label> -->
+              <textarea class="form-control form-control-ajout form-area" rows="5" type="text" name="inputBiographie" placeholder="Saisir une biographie" id="inputBiographie" required="required" autofocus="autofocus" rows="5" ></textarea>
+<span ></span>
+            </div>
+
+
+        <br>
+        <div class="textcenter">
+          <a href="index.php?page=adminauteur" class="btn-event-sup">Annuler</a>
+          <button type="submit" class="btn-form" name="btAjouter">Ajouter</button>
+        </div>
+        </form>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

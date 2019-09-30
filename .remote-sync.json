@@ -8,7 +8,7 @@
   "deleteLocal": false,
   "hostname": "si6.arras-sio.com",
   "port": "21",
-  "target": "/",
+  "target": "/NewLegendarium2019-2020",
   "ignore": [
     ".remote-sync.json",
     ".git/**"

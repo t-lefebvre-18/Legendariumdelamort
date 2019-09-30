@@ -1,0 +1,86 @@
+{% extends "baseAdmin.html.twig" %}
+{% block title %}
+  {{ parent() }}
+
+{% endblock %}
+{% block activeUS %}active{% endblock %}
+{% block contenu %}
+
+  <div class="centerdiv">
+    <div class="card box-shadow" style="width: 100%;">
+      <!-- <img src="{{ e.illustration }}" class="card-img-top" alt="..."> -->
+      <div class="card-body">
+        <h3 class="card-title">Table utilisateur</h3>
+
+        <div class="table-responsive">
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Prenom</th>
+                <th scope="col">Email</th>
+                <th scope="col">DateCréa</th>
+                <th scope="col">Rôle</th>
+                <th scope="col">Modif</th>
+                <th scope="col">Trash</th>
+                <!-- <th scope="col"></th> -->
+              </tr>
+            </thead>
+            <tfoot>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Prenom</th>
+                <th scope="col">Email</th>
+                <th scope="col">DateCréa</th>
+                <th scope="col">Rôle</th>
+                <th scope="col">Modif</th>
+                <th scope="col">Trash</th>
+                <!-- <th scope="col"></th> -->
+              </tr>
+            </tfoot>
+            <tbody>
+              {% for u in liste %}
+
+                    <tr id="tr">
+                      <th scope="row">#</th>
+                      <td>{{ u.nom }}</td>
+                      <td>{{ u.prenom }}</td>
+                      <td>{{ u.email }}</td>
+                      <td>{{ u.dateCrea }}</td>
+                      {% if u.id == 1 %}
+                      <td>Administrateur</td>
+                      {% else %}
+                      <td>Client</td>
+                      {% endif %}
+                      <td>
+                        <a href="#">
+                          <i class="fas fa-edit icon"></i>
+                        </a>
+                      </td>
+                      <td>
+                        <a href="#">
+                          <i class="fas fa-trash icon"></i>
+                        </a>
+
+                      </td>
+                      <!-- <td><label class="checkbox">
+                        <input type="checkbox" name="cocher[]" id="cocher[]" value="1"/>
+                        <span class="default"></span>
+                      </label></td> -->
+                    </tr>
+
+                {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <!-- <p class="card-text"></p> -->
+        <br>
+        <div class="textcenter">
+          <a href="#" class="btn-event-sup">Suprimer</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

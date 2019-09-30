@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr" class="html-singin" style="background-image: url('img/fond.jpg');">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    {% block style %}{% endblock %}
+    <title>
+      {% block title %}Légendarium -{% endblock %}
+    </title>
+  </head>
+
+  <body class="body-singin">
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-xl-10 col-lg-12 col-md-9">
+          <div class="card-singin o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+              <div class="row">
+                <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                <div class="col-lg-6">
+                  <div class="p-5">
+                    <div class="text-center">
+                      <h1 class="h4 text-gray-900 mb-4">Inscription !</h1>
+                    </div>
+                    <form class="user">
+                      <div class="form-group row" style="padding:1em 0em;">
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                          <input type="text" class="form-control form-control-ajout" name="inputPrenom" id="inputPrenom" placeholder="First Name">
+                        </div>
+                        <div class="col-sm-6">
+                          <input type="text" class="form-control form-control-ajout" name="inputNom" id="inputNom" placeholder="Last Name">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <input type="email" class="form-control form-control-ajout" name="inputEmail" id="inputEmail" placeholder="Email Address">
+                      </div>
+                      <div class="form-group">
+                        <input type="password" class="form-control form-control-ajout" name="inputPassword" id="inputPassword" placeholder="Password">
+                          </div>
+                          <div class="form-group">
+                            <input type="password" class="form-control form-control-ajout" name="inputConfirmPassword" id="inputConfirmPassword" placeholder="Repeat Password">
+                        </div>
+
+                      <div class="form-group row" hidden>
+                        <div class="col-sm-6 mb-3 mb-sm-0">
+                          <input id="dateCrea" type="date" name="dateCrea" class="form-control form-control-ajout" value="" readonly>
+                          <script>
+                            document.getElementById("dateCrea").valueAsDate = new Date();
+                          </script>
+                        </div>
+                        <div class="col-sm-6">
+                         <input type="hidden" name="imputRole" value="2">
+                        </div>
+
+
+                      </div>
+                      {% if form.valide is defined %}
+                  {% if form.valide != true %}
+                  <div class="alert alert-danger box-shadow" role="alert" style="color:rgb(231,76,20)">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <h3 class="alert-heading">{{ form.messageTitre }}</h3>
+                <h5 class="blod">{{ form.message }}</h5>
+                <hr>
+                <p class="mb-0">Les alertes sont là pour vous indiquer d'éventuel problème ou erreur !</p>
+              </div>
+                  {% endif %}
+                  {% endif %}
+                  <div class="textcenter">
+                        <button class="btn-form" name="btInscrire" type="submit">S'inscrire</button>
+                      </div>
+                    </form>
+                    <hr>
+                    <div class="text-center">
+                      <a class="small" href="index.php?page=connexion">Vous avez déjà un compte ? S'identifier !</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</html>

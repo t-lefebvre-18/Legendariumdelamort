@@ -1,0 +1,164 @@
+{% extends "baseAdmin.html.twig" %}
+{% block title %}
+  {{ parent() }}
+
+{% endblock %}
+{% block activeAU %}active{% endblock %}
+{% block contenu %}
+
+  <div class="centerdiv">
+    <div class="card box-shadow card-size">
+      <div class="card-body">
+      {% if form.valide is defined %}
+{% if form.valide == true %}
+<h3 class="card-title">{{ form.messageTitre }}</h3>
+<p class="cadr-text">{{ form.message }}</p>
+<hr>
+<div class="textcenter">
+  <a href="index.php?page=adminlivre" class="btn-event">Retour</a>
+  <a href="index.php?page=ajoutlivre" class="btn-event">Ajouter</a>
+</div>
+  {% else %}
+  <h3 class="card-title">{{ form.messageTitre }}</h3>
+  <p class="cadr-text">{{ form.message }}</p>
+  <hr>
+  <div class="textcenter">
+    <a href="index.php?page=adminlivre" class="btn-event">Retour</a>
+    <a href="index.php?page=ajoutlivre" class="btn-event">Ajouter</a>
+  </div>
+  {% endif %}
+{% else %}
+        <h3 class="card-title">Ajout livre</h3>
+        <form method="post">
+
+          <div class="form-row">
+          <div class="col">
+            <!-- <label for="inputCouverture" >Saisir un nom</label> -->
+            <input class="form-control form-control-ajout" type="text" name="inputCouverture" placeholder="Saisir l'URL de la couverture" id="inputCouverture" required="required" autofocus="autofocus">
+            <span ></span>
+          </div>
+
+          <div class="col">
+            <!-- <label for="inputTitre" >Saisir un titre</label> -->
+            <input class="form-control form-control-ajout" type="text" name="inputTitre" placeholder="Saisir un titre" id="inputTitre" required="required" autofocus="autofocus">
+            <span ></span>
+          </div>
+          </div>
+          <br/>
+          <div class="form-row">
+          <div class="col">
+            <!-- <label for="inputIdauteur" >Saisir un auteur</label> -->
+            {# <input class="form-control form-control-ajout" type="text" name="inputIdauteur" placeholder="Saisir un auteur" id="inputIdauteur" required="required" autofocus="autofocus">
+            <span ></span> #}
+            <select name="inputIdauteur" id="inputIdauteur" class="form-control" required="required" autofocus="autofocus">
+                  <option selected="selected">auteur...</option>
+                  {% for a in listea %}
+                    <option value="{{ a.idauteur }}">{{ a.nomauteur }}.{{ a.prenomauteur }}</option>
+                  {% endfor %}
+                </select>
+          </div>
+
+          <div class="col">
+            <!-- <label for="inputIdediteur" >Saisir un editeur</label> -->
+            {# <input class="form-control form-control-ajout" type="text" name="inputIdediteur" placeholder="Saisir un editeur" id="inputIdediteur" required="required" autofocus="autofocus">
+            <span ></span> #}
+            <select name="inputIdediteur" id="inputIdediteur" class="form-control" required="required" autofocus="autofocus">
+                  <option selected="selected">editeur...</option>
+                  {% for e in listee %}
+                    <option value="{{ e.idediteur }}">{{ e.nomediteur }}</option>
+                  {% endfor %}
+                </select>
+          </div>
+          </div>
+          <br/>
+          <div class="form-row">
+          <div class="col">
+            <!-- <label for="inputDatelivre" >Saisir la date du parution</label> -->
+            <input class="form-control form-control-ajout" type="date" name="inputDatelivre" placeholder="Saisir la date du parution" id="inputDatelivre" required="required" autofocus="autofocus">
+            <span ></span>
+          </div>
+          <div class="col">
+            <!-- <label for="inputIsbn" >Saisir l'ISBN du livre</label> -->
+            <input class="form-control form-control-ajout" type="text" name="inputIsbn" placeholder="Saisir l'ISBN du livre" id="inputIsbn" required="required" autofocus="autofocus">
+            <span ></span>
+
+          </div>
+          </div>
+          <br/>
+          <div class="form-row">
+          <div class="col">
+            <!-- <label for="inputIdauteur" >Saisir un auteur</label> -->
+            {# <input class="form-control form-control-ajout" type="text" name="inputIdauteur" placeholder="Saisir un auteur" id="inputIdauteur" required="required" autofocus="autofocus">
+            <span ></span> #}
+            <select name="inputIddisponibilite" id="inputIddisponibilite" class="form-control" required="required" autofocus="autofocus">
+                  <option selected="selected">disponibilite...</option>
+                  {% for d in listed %}
+                    <option value="{{ d.iddisponibilite }}">{{ d.libelledisponibilite }}</option>
+                  {% endfor %}
+                </select>
+          </div>
+
+          <div class="col">
+            <!-- <label for="inputIdediteur" >Saisir un editeur</label> -->
+            {# <input class="form-control form-control-ajout" type="text" name="inputIdediteur" placeholder="Saisir un editeur" id="inputIdediteur" required="required" autofocus="autofocus">
+            <span ></span> #}
+            <select name="inputIdcollection" id="inputIdcollection" class="form-control" required="required" autofocus="autofocus">
+                  <option selected="selected">collection...</option>
+                  {% for c in listec %}
+                    <option value="{{ c.idcollection}}">{{ c.libellecollection }}</option>
+                  {% endfor %}
+                </select>
+          </div>
+          </div>
+          <br/>
+          <div class="form-row">
+          <div class="col">
+            <!-- <label for="inputIdauteur" >Saisir un auteur</label> -->
+            {# <input class="form-control form-control-ajout" type="text" name="inputIdauteur" placeholder="Saisir un auteur" id="inputIdauteur" required="required" autofocus="autofocus">
+            <span ></span> #}
+            <select name="inputIdgenre" id="inputIdgenre" class="form-control" required="required" autofocus="autofocus">
+                  <option selected="selected">genre...</option>
+                  {% for g in listeg %}
+                    <option value="{{ g.idgenre}}">{{ g.libellegenre }}</option>
+                  {% endfor %}
+                </select>
+          </div>
+
+          <div class="col">
+            <!-- <label for="inputIdediteur" >Saisir un editeur</label> -->
+            {# <input class="form-control form-control-ajout" type="text" name="inputIdediteur" placeholder="Saisir un editeur" id="inputIdediteur" required="required" autofocus="autofocus">
+            <span ></span> #}
+            <select name="inputIdcoupdecoeur" id="inputIdcoupdecoeur" class="form-control" required="required" autofocus="autofocus">
+                  <option selected="selected">coup de coeur ...</option>
+                  {% for f in listef %}
+                    <option value="{{ f.idcoupdecoeur}}">{{ f.libelle }}</option>
+                  {% endfor %}
+                </select>
+          </div>
+          </div>
+          <br/>
+          <div class="form-row">
+          <div class="col">
+            <!-- <label for="" >Saisir le résumer du livre</label> -->
+            <input disabled class="form-control form-control-ajout" type="text" name="" placeholder="Saisir le résumer du livre" id="" required="required" autofocus="autofocus">
+            <span ></span>
+          </div>
+          <div class="col">
+            <!-- <label for="inputPrix" >Saisir le prix du livre</label> -->
+            <input class="form-control form-control-ajout" type="number" name="inputPrix" placeholder="Saisir le prix du livre" id="inputPrix" required="required" autofocus="autofocus">
+            <span ></span>
+
+          </div>
+          </div>
+
+        <br>
+        <div class="textcenter">
+          <a href="index.php?page=adminlivre" class="btn-event-sup">Annuler</a>
+          <button type="submit" class="btn-form" name="btAjouter">Ajouter</button>
+        </div>
+        </form>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

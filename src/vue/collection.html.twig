@@ -1,0 +1,49 @@
+{% extends "base.html.twig" %}
+{% block title %}{{ parent() }}Collection{% endblock %}
+{% block activeCA %}active{% endblock %}
+{% block contenu %}
+<div>
+  <h3 class="textcenter">Liste des Collection !</h3>
+  <hr>
+  <h3>Nos livre de la collections {{ c.libellecollection }}</h3>
+  {% for l in liste %}
+    <div class="row">
+      <div class="col-12 	col-sm-4 col-md-4 col-lg-4 col-xl-2 page-col">
+        <div class="div-img-livre">
+        <img class="img-livre" src="{{ l.couverture }}" alt=""> </div>
+      </div>
+      <div class="col-12 	col-sm-8 col-md-8 col-lg-8 col-xl-8 page-col">
+        <h3 class="blod">{{ l.titre }}</h3>
+        <h5>{{ l.nomauteur }}.{{ l.prenomauteur }}</h5>
+        <p>{{ l.libellegenre }}&nbsp;&nbsp;|&nbsp;&nbsp;{{ l.nomediteur }}&nbsp;&nbsp;|&nbsp;&nbsp;parue en : {{ l.datelivre }}&nbsp;&nbsp;|&nbsp;&nbsp;isbn : {{ l.isbn }}
+        </p>
+      </div>
+      <div class="col-12 	col-sm-12 col-md-12 col-lg-12 col-xl-2 page-col">
+        <h5 class="blod">{{ l.prix }}€</h5>
+
+        <h5 class="blod">{{ l.libelledisponibilite }}</h5>
+          <a href="index.php?page=livre&id={{ l.id }}" class="btn-event">Voir le livre</a>
+        </div>
+
+    </div>
+    <hr/>
+  {% endfor %}
+  {% set nb = form.nbpages %}
+  <nav aria-label="Page navigation box-shadow">
+  <ul class="pagination justify-content-center ">
+    <li class="page-item"><a class="page-link" href="index.php?page=collection&nopage={{ 0 }}">Précédent</a></li>
+    {% for i in 1..nb %}
+
+      <li class="page-item">
+        <a class="page-link" href="index.php?page=collection&nopage={{ i - 1 }}">{{ i - 1 }}</a>
+      </li>
+    {% endfor %}
+    <li class="page-item"><a class="page-link" href="index.php?page=collection&nopage={{ nb-1 }}">Suivant</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+{% endblock %}

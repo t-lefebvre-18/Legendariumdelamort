@@ -1,0 +1,88 @@
+{% extends "baseAdmin.html.twig" %}
+{% block title %}
+  {{ parent() }}
+
+{% endblock %}
+{% block activeGE %}active{% endblock %}
+{% block contenu %}
+
+  <div class="centerdiv">
+    <div class="card box-shadow" style="width: 100%;">
+      <!-- <img src="{{ e.illustration }}" class="card-img-top" alt="..."> -->
+      <div class="card-body">
+        <h3 class="card-title">Table genre</h3>
+
+        <div class="table-responsive">
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Genre</th>
+                <th scope="col">Modif</th>
+                <th scope="col">Trash</th>
+                <!-- <th scope="col"></th> -->
+              </tr>
+            </thead>
+            <tfoot>
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Genre</th>
+                <th scope="col">Modif</th>
+                <th scope="col">Trash</th>
+                <!-- <th scope="col"></th> -->
+              </tr>
+            </tfoot>
+            <tbody>
+              {% for g in liste %}
+
+                              <tr>
+                                <th scope="row">#{{ g.idgenre }}</th>
+                                <td>{{ g.libellegenre }}</td>
+                                <td>
+                                  <a href="index.php?page=modifgenre&id={{g.idgenre}}">
+                                    <i class="fas fa-edit icon"></i>
+                                  </a>
+                                </td>
+                                <td>
+                                <button class="btn-form-modal" type="button" name="button" data-toggle="modal" data-target="#deleteGenre{{ g.idgenre }}"><i class="fas fa-trash icon"></i></button>
+                                </td>
+                    <!-- <td><label class="checkbox">
+                      <input type="checkbox" name="cocher[]" id="cocher[]" value="{{c.idcollection}}"/>
+                      <span class="default"></span>
+                    </label></td> -->
+                  </tr>
+                  <!-- Modal -->
+                  <div class="modal fade" id="deleteGenre{{ g.idgenre }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content box-shadow">
+                        <div class="card-header-modal">
+                          <h3 class="card-title" id="exampleModalLabel">Voulez vous supprimer ce genre ?</h3>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="card-body">
+                          <p class="card-text">Attention ! Tout les livres qui on pour genre <span class="span">{{ g.libellegenre }}</span> seront suprimer !</p>
+                          <hr>
+                          <div class="textcenter">
+                            <a href="#" class="btn-event" data-dismiss="modal">Annuler</a>
+                            <a href="index.php?page=admingenre&id={{g.idgenre}}" class="btn-event-sup">Suprimer</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <!-- <p class="card-text"></p> -->
+        <br>
+        <div class="textcenter">
+          <a href="#" class="btn-event-sup">Suprimer</a>
+          <a href="index.php?page=ajoutgenre" class="btn-event" >Ajouter</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
